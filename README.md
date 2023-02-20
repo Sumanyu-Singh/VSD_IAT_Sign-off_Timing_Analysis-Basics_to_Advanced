@@ -1,9 +1,7 @@
 # VSD-IAT: Sign-off Timing Analysis - Basics to Advanced
-![image](https://user-images.githubusercontent.com/73732594/152016610-be3ef4c8-601c-40e7-af85-91dc3ae9b2a4.png)
+![vsd_iat_logo](https://user-images.githubusercontent.com/73732594/152016610-be3ef4c8-601c-40e7-af85-91dc3ae9b2a4.png)
 
-Static Timing Analysis (STA) is a method of verifying the timing performance of a digital circuit design by analyzing the delays of the circuit's logic paths. It is typically used to ensure that the circuit will meet its timing requirements, such as setup time, hold time, and clock-to-output delays.
-
-In STA, the circuit is analyzed without actually simulating its operation over time. Instead, the analysis is based on a model of the circuit's behavior that takes into account the delays of the gates and interconnects. The inputs to the model are the timing constraints of the design, such as clock period and input arrival times, and the output of the analysis is a set of timing reports that indicate whether the design meets its requirements. 
+Static Timing Analysis (STA) is a method of verifying the timing performance of a digital circuit design by analyzing the delays of the circuit's logic paths. It is typically used to ensure that the circuit will meet its timing requirements, such as setup time, hold time, and clock-to-output delays. 
 
 It starts with basics of Static Timing Analysis, timing paths, startpoint, endpoint and combinational logic definitions. It explains setup and hold checks, how STA tools calculate setup and hold violations. Then it slowly builds up to cover all aspects of STA like multiple types of timing paths, design rule checks, checks on async pins and clock gates. After that we go into slightly advanced topics like Time borrowing on latches, timing arcs, cell delays and models, impact of clock network on STA. Since STA and timing constraints go hand in hand the workshop covers basics of all the timing constraints that an engineer should know for STA like clock definitions, clock groups, clock characteristics, port delays and timing exceptions. 
 
@@ -13,21 +11,21 @@ It starts with basics of Static Timing Analysis, timing paths, startpoint, endpo
 
 <!-- code_chunk_output -->
 
-- [Day-1 Summary](#day-1-summary)
+* [Day-1 Summary](#day-1-summary)
 	
-- [Day-1 Labs](#day-1-labs)
-  - [OpenTimer Introduction](#ot_Intro)
-  - [Understanding basics of OpenTimer](#ot_basics)
-  - [Inputs to OpenTimer](#ot_inputs)
-  - [Constraints creation](#constraints)
-  - [OpenTimer Run script](#ot_run)  
-- [Day-2_Summary](#day-2-summary)
+* [Day-1 Labs](#day-1-labs)
+  * [OpenSTA Introduction and its basics](#opensta-introduction-and-its-basics)
+  * [Input files to OpenSTA](#input-files-to-opensta)
+  * [Constraints creation](#constraints-creation)
+  * [OpenSTA Run script](#opensta-run-script) 
   
-- [Day-2_Labs](#day-2-labs)
-  - [Liberty Files and Understanding Lib Parsing](#liberty_files_and_understanding_lib_parsing)
-  - [Understanding SPEF file and SPEF parsing](#understanding_spef_file_and_spef_parsing)
-  - [Understanding OpenTimer tool messages](#understanding_opentimer_tool_messages)
-  - [Understanding timing reports and timing graphs](#understanding_timing_reports_and_timing_graphs)
+* [Day-2 Summary](#day-2-summary)
+  
+* [Day-2 Labs](#day-2-labs)
+  * [Liberty File and Understanding .lib file ](#liberty-file-and-understanding-lib-file)
+  * [Understanding Lib Parsing](#understanding-lib-parsing)
+  * [Understanding SPEF file and SPEF parsing](#understanding-spef-file-and-spef-parsing)
+  * [Understanding Timing Reports](#understanding-timing-reports)
 - [Day-3_Summary](#day-3-summary)
  
 - [Day-3_Labs](#day-3-labs)
@@ -60,6 +58,10 @@ Static Timing Analysis (STA) is a method of verifying timing performance of a de
 
 STA breaks the paths at ports and sequential elements.
 
+![timing_paths](https://user-images.githubusercontent.com/100671647/220118112-387f4ce6-eb1f-4948-ac85-d19279178393.png)
+
+**Different timing paths are shown above**
+
 The timing analysis is performed on each of these paths.
 
 Broadly speaking, there are three components of the path, which are, startpoint, endpoint and combinational logic.
@@ -72,17 +74,35 @@ Combinational logic blocks are elements which have no memory, or internal state.
 
 Between a set of startpoint and endpoint, combinational logic might have multiple paths.
 
+![set_up_chk](https://user-images.githubusercontent.com/100671647/220123544-1e8c8906-035b-4cfa-9f12-88f61ed96d02.png)
+
+**Data and clock signals for setup check shown above (In first, setup time is met and in 2nd it gets violated)**
+
+![hold_chk](https://user-images.githubusercontent.com/100671647/220124281-879b921b-2532-4235-bde0-d608ef95726e.png)
+
+**Data and clock signals for hold check shown above (In first, hold time is met and in 2nd it gets violated)**
+
+
 Setup time of a flop is dependent on the technology node. Value is available in logic libraries. This enforces max delay on the data path. Data should be available at the input of sequential device before clock edge that captures the data.
 
 Similarly hold time enforces min delay on the data path. Here, data should be stable at the input of sequential device for sometime after the clock edge that captures the data.
 
 Setup Slack = Data Required Time - Data Arrival Time
 
+Slack is positive when data arrives earlier than required time.
+![pos_slack](https://user-images.githubusercontent.com/100671647/220125981-e5839030-1dcd-47cf-9cba-c4439581a03e.png)
+
+**Above picture shows positive slack**
+
 Slack is negative when data arrives later than required time.
 
 Timing is met when slack is positive, otherwise it isn't.
 
 Synopsys Design Constraints (SDC) for timing specify parameters affecting operational frequency of the design. Examples: create_clock, create generated_clock, set_clock groups, set_clock_transition, set_timing_derate, etc.
+![create_clk](https://user-images.githubusercontent.com/100671647/220128930-b49dab46-716c-439d-917a-5841fe147a5f.png)
+
+**Some examples of create_clock and create_generated_clock command are shown above**
+
 
 Similarly, there are constraints for area and power, which specify restrictions about the area and power. Examples: set_max_area, set_max_dynamic_power, etc. and constraints for design rules which are requirements of the target technology. Examples: set_max_capacitance, set_max_transition, set_max_fanout, etc. 
 
@@ -90,21 +110,17 @@ There are exceptions to design constraints which relax the requirements set by o
 
 # Day-1 Labs
 
-## OpenTimer Introduction
+## OpenSTA Introduction and its basics
 
-OpenTimer is a new static timing analysis (STA) tool to help IC designers quickly verify the circuit timing. It is developed completely from the ground up using C++17 to efficiently support parallel and incremental timing. 
+OpenSTA is an open-source software package for performing performance testing and analysis of integrated circuits (ICs) or electronic designs. It is designed to analyze the timing characteristics of digital circuits and provide an understanding of their performance.
 
-Compile OpenTimer and launch the shell program ot-shell.
+OpenSTA stands for "Open System Timing Analyzer," and it is used to verify and optimize the timing of digital circuits in order to ensure that they meet the required performance specifications. It is a free tool that can be used to simulate the timing behavior of a digital circuit, which is an important step in the design and optimization process.
 
-## Understanding basics of OpenTimer
+An STA tool takes design, standard cell, constraints as input and perform timing checks on the design. OpenSTA works on industry formats (e.g., .v, .spef, .lib, .sdc) and is designed to be parallel and portable.
 
-![image](https://user-images.githubusercontent.com/73732594/152780811-db8cd8d6-5b3e-4932-a504-b1ab46e57eed.png)
+## Input files to OpenSTA
 
-An STA tool takes design, standard cell, constraints as input and perform timing checks on the design. OpenTimer works on industry formats (e.g., .v, .spef, .lib, .sdc) and is designed to be parallel and portable.
-
-## Inputs to OpenTimer
-
-The inputs to the opentimer are design, standard cells associated with the netlist and the constraints.
+The inputs to OpenSTA are design, standard cells associated with the netlist and the constraints.
  
 ![Screenshot from 2022-02-07 13-33-42](https://user-images.githubusercontent.com/73732594/152804282-a78572ba-9ba0-4f8c-b8d6-5331f0b7b408.png)
 The Netlist for the lab.
@@ -117,7 +133,7 @@ A typical example for the standard cell from OSU-180.lib file.
 The SDC file provided for the lab. This consists of the clock period, IO delays, input transition and capacitance delays. 
 ![Screenshot from 2022-02-07 19-46-47](https://user-images.githubusercontent.com/73732594/152805399-8f6b8c8b-793b-4286-81aa-5d88c9deecd8.png)
 
-## OpenTimer Run script
+## OpenSTA Run script
 
 ![Screenshot from 2022-02-07 19-53-25](https://user-images.githubusercontent.com/73732594/152807446-c8a6da52-7e15-4342-b0d1-dad8deb7080b.png)
 ![Screenshot from 2022-02-07 20-01-22](https://user-images.githubusercontent.com/73732594/152807613-00e5c962-5d94-49b0-b1d2-c807d755e1bb.png)
@@ -132,7 +148,7 @@ Apart from setup and hold checks, STA also has other timing checks in place like
 
 # Day-2 Labs
 
-## Liberty Files and Understanding Lib Parsing
+## Liberty File and Understanding .lib file
 The .lib file is an ASCII representation of the timing and power
 parameters associated with any cell in a particular semiconductor
 technology The .lib file contains timing models and data to calculate I/O delay paths, Timing check values and Interconnect delays.
@@ -152,7 +168,7 @@ The max capacitance increases multifold, and the number of input pins.
 
 Fabrication process variations could either increase or decrease the delay of a cell. So we need to set early and late value while setting the derate factor. STA tool would consider early or late timing derate based on the path and type of analysis.
 
-## Understanding SPEF file and SPEF parsing
+## Understanding Lib Parsing
 
 SPEF can be generated by place-and-route tool or a parasitic extraction tool, and then this SPEF is used by timing analysis tool for checking the timing, in-circuit simulation or to perform crosstalk analysis.
 
@@ -167,13 +183,13 @@ A Typical SPEF File has 4 main sections
 ![Screenshot from 2022-02-07 21-21-25](https://user-images.githubusercontent.com/73732594/152823092-c6aac9a5-1b1c-4bc6-911a-728a2949ffa0.png)
 
 
-## Understanding OpenTimer tool messages
+## Understanding SPEF file and SPEF parsing
 
 ![Screenshot from 2022-02-07 22-37-20](https://user-images.githubusercontent.com/73732594/152836739-3295abdf-d8a3-4b8b-812b-cd9b4fd2a36a.png)
 
 Here the number of cells are reported as an information message and arrival time for the marked pin is given as 40.33.
 
-## Understanding timing reports and timing graphs
+## Understanding Timing Reports 
 
 ![Screenshot from 2022-02-07 22-37-20](https://user-images.githubusercontent.com/73732594/152837812-50e222c9-106d-472f-94c2-2e2d5b9341f3.png)
 This is the timing report we have obtained from the netlist and other inputs being parsed into the OpenTimer tool.
@@ -260,12 +276,9 @@ In Synchronous clocks, events happen at a fixed phase relation whereas in asynch
 
 ## Author
 
-[Anmol Saxena](https://www.linkedin.com/in/anmol-saxena-ee/), M.Tech ICT (2019-21), DA-IICT, Gandhinagar, Gujarat, India
-- Contact: anmol.saxena2016@outlook.com, 201911053@daiict.ac.in  <br>
-- System configuration during the undertaking:  <br>\
--- Processor: Intel(R) Core(TM) i5-5300U CPU @ 2.30GHz   <br>\
--- Installed RAM: 8.00 GB (7.88 GB usable)  <br>\
--- System type:	Ubuntu 18.04 LTS, 64-bit operating system, x64-based processor  <br>
+[Sumanyu Singh](https://www.linkedin.com/in/sumanyu-singh-718272170/), M.Tech (Microelectronics), IIITA (2021-23), IIIT Allahabad, Prayagraj, Uttar Pradesh, India
+
+
 
 
 
