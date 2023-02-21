@@ -151,10 +151,10 @@ The .lib file is an ASCII representation of the timing and power
 parameters associated with any cell in a particular semiconductor
 technology The .lib file contains timing models and data to calculate I/O delay paths, Timing check values and Interconnect delays.
 
-Exercises:
+**Exercises:**
 
-• Find all the cells in simple_Late.lib.
-• Find all the pins of the cell NAND2_X1 in simple_Late.lib
+• Find all the cells in simple_max.lib.
+• Find all the pins of the cell NAND2_X1 in simple_max.lib
 
 211 and 3.
 
@@ -162,7 +162,7 @@ Exercises:
 
 The max capacitance increases multifold, and the number of input pins.
 
-• What is the difference between ‘simple_Late.lib’ and ‘simple_Early.lib
+• What is the difference between ‘simple_max.lib’ and ‘simple_min.lib
 
 Fabrication process variations could either increase or decrease the delay of a cell. So we need to set early and late value while setting the derate factor. STA tool would consider early or late timing derate based on the path and type of analysis.
 
