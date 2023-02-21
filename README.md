@@ -114,7 +114,7 @@ An STA tool takes design, standard cell, constraints as input and perform timing
 
 ## Input files to OpenSTA
 
-At first, we need run below command for cloning:
+At first, we need to run below command for cloning:
 
      git clone https://github.com/vikkisachdeva/openSTA_sta_workshop
 
@@ -125,7 +125,7 @@ Below is the tool flow for starting navigation through directories:
 
 ![flow](https://user-images.githubusercontent.com/100671647/220419564-56b35da8-e773-45e1-a628-4d93ba179072.png)
 
-Below is the verilog file **simple.v** opened in gvim editor:
+Below is the verilog file **simple.v** opened in vim editor:
 
 ![simple_v](https://user-images.githubusercontent.com/100671647/220421706-af7b19b3-0a97-4bb5-a9b4-607862a38947.png)
 
@@ -141,21 +141,32 @@ Example of nand2_1 cell from .lib file is shown below:
 ## Constraints creation
 
 The SDC file provided for the lab. This consists of the clock period, IO delays, input transition and capacitance delays. 
+Below is the standard Synopsys Design Constraint (SDC) file (**simple.sdc**):
+
+![sdc](https://user-images.githubusercontent.com/100671647/220425299-229a4c13-9963-48c3-8d1f-4012410dc4f6.png)
 
 Primary ports are defined with delays with associated clock: tau2015_clk
-set_input_delay 5 –max –rise [get_ports inp1] –clock tau2015_clk
+set_input_delay 5 –max –rise [get_ports inp1] –clock tau2015_clk 
 set_output_delay -10 –min –fall [get_ports out] –clock tau2015_clk
 
 ![Screenshot from 2022-02-07 19-46-47](https://user-images.githubusercontent.com/73732594/152805399-8f6b8c8b-793b-4286-81aa-5d88c9deecd8.png)
 
 ## OpenSTA Run script
 
-![Screenshot from 2022-02-07 19-53-25](https://user-images.githubusercontent.com/73732594/152807446-c8a6da52-7e15-4342-b0d1-dad8deb7080b.png)
-![Screenshot from 2022-02-07 20-01-22](https://user-images.githubusercontent.com/73732594/152807613-00e5c962-5d94-49b0-b1d2-c807d755e1bb.png)
+Below are the commands used for running the STA flow:
 
-The timing checks aren't met since the slack is negative.
+![run_script](https://user-images.githubusercontent.com/100671647/220426436-46f173a7-6977-4f44-a773-5996c84e4e2d.png)
 
-![Screenshot from 2022-02-07 20-03-33](https://user-images.githubusercontent.com/73732594/152808162-776920d1-3ba1-449d-a0bf-13c76edbce7a.png)
+For running the OpenSTA, we use below command
+
+	sta run.tcl -exit | tee run1.log
+
+Below are the reports after running OpenSTA:
+
+![violated](https://user-images.githubusercontent.com/100671647/220427581-bbc782a8-e9e3-4269-9ed7-598a69a50212.png)
+![met](https://user-images.githubusercontent.com/100671647/220427821-abb25d94-5f2b-44c9-8176-be51baffe25c.png)
+
+In 1st, the timing checks aren't met(VIOLATED) since the slack is negative but in 2nd it is MET (slack is positive).
 
 # Day-2 Summary
 
