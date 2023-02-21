@@ -78,7 +78,7 @@ Between a set of startpoint and endpoint, combinational logic might have multipl
 
 **Data and clock signals for setup check shown above (In first, setup time is met and in 2nd it gets violated)**
 
-![hold_chk](https://user-images.githubusercontent.com/100671647/220124281-879b921b-2532-4235-bde0-d608ef95726e.png)
+![hold_check](https://user-images.githubusercontent.com/100671647/220124281-879b921b-2532-4235-bde0-d608ef95726e.png)
 
 **Data and clock signals for hold check shown above (In first, hold time is met and in 2nd it gets violated)**
 
