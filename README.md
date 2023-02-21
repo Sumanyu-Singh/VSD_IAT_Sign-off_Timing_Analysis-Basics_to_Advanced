@@ -22,25 +22,25 @@ It starts with basics of Static Timing Analysis, timing paths, startpoint, endpo
   * [Understanding Lib Parsing](#understanding-lib-parsing)
   * [Understanding SPEF file and SPEF parsing](#understanding-spef-file-and-spef-parsing)
   * [Understanding Timing Reports](#understanding-timing-reports)
-- [Day-3_Summary](#day-3-summary)
+- [Day-3 Summary](#day-3-summary)
  
-- [Day-3_Labs](#day-3-labs)
-  - [Understanding full reg to reg STA analysis](#reg-sta)
-  - [Understanding Slack computation](#slack-computation)
+- [Day-3 Labs](#day-3-labs)
+  - [Understanding full reg to reg STA analysis](#understanding-full-reg-to-reg-sta-analysis)
+  - [Understanding Slack computation](#understanding-slack-computation)
   
-- [Day-4_Summary](#day-4-summary)
+- [Day-4 Summary](#day-4-summary)
   
-- [Day-4_Labs](#day-4-labs)
-  - [Understanding clock gating check](#understanding-clock-gating)
-  - [Understanding Async pin checks](#understanding-async-check)
+- [Day-4 Labs](#day-4-labs)
+  - [Understanding clock gating check](#understanding-clock-gating-check)
+  - [Understanding Async pin checks](#understanding-async-pin-checks)
   
-- [Day-5_Summary](#day-5-summary)
+- [Day-5 Summary](#day-5-summary)
 
-- [Day-5_Labs](#day-5-labs)
-  - [Revisit slack computation](#revisit-slack)
-  - [Clock properties](#clockproperties)
-  - [CRPR](#crpr)
-  - [ECO](#eco)
+- [Day-5 Labs](#day-5-labs)
+  - [Revisit slack computation](#revisit-slack-computation)
+  - [Clock Reconvergence Pessimism (CRP) Basics](#clock-reconvergence-pessimism-crp-basics)
+  - [Clock Reconvergence Pessimism Removal (CRPR)](#clock-reconvergence-pessimism-removal-crpr)
+  - [Engineering Change Order (ECO)](#engineering-change-order-eco)
 - [Acknowledgements:](#acknowledgements)
 - [Author:](#author)
 
@@ -203,7 +203,7 @@ This is the timing report we have obtained from the netlist and other inputs bei
 
 ![Screenshot from 2022-02-07 22-53-31](https://user-images.githubusercontent.com/73732594/152839697-85913598-8ed4-49df-8d95-8e3cb26ad87c.png)
 
-# Day-3_Summary
+# Day-3 Summary
 
 When we have multiple clocks, in STA, a possible common base period is choses, and a restrictive setup and hold check is followed. By default, the checks are restrictive in nature. The inclusion of falling edge clock on capture after positive edge on launching flop may lead to a half cycle period delay. Timing arcs consist of cell and net arcs. Combinational arcs go from input pins to the output pin, whereas sequential arcs consist of CLK->D arc (Setup/hold arc), CLK->OUT (Propagation delay) and CLK->RST (Recovery/Removal). We are also introduced to the concept of unateness and non-unateness. Cell delays are in general fuction of input transition and capacitive load. Clock latency can be from the source and towards the network. Unlike ideal clocks, real clocks have jitter which leads to uncertainty of the position of rising/falling edge.
 
@@ -227,12 +227,12 @@ Functionally, it might seem like the first path, corresponds to the slack comput
 
 ![Screenshot from 2022-02-07 23-09-25](https://user-images.githubusercontent.com/73732594/152842243-401bf7ff-c1e7-4bc6-97b1-e2c8348d17b4.png)
 
-# Day-4_Summary
+# Day-4 Summary
 
 Crosstalk may lead to delta delays and glitches. Switching activity affected by coupling of aggresor and victim, leads to delta delay which may cause timing failure. Glitching is caused due to sudden charge transfer on a stable net which may cause functional failure. Variation could be inter-die and intra-die. The former is of global and systematic, and latter is of on-chip and random nature. In clock gating transition on gating pin, shouldn't create unnecessary active edge of the clock in the fanout. Async pin checks are needed to avoid unknown state. Recovery and removal time checks for assertion and deassertions need to be checked therefore.
 
 
-# Day-4_Labs
+# Day-4 Labs
   ## Understanding clock gating check
   ![Screenshot from 2022-02-07 23-37-03](https://user-images.githubusercontent.com/73732594/152846371-b79e12aa-b53e-466b-acff-fea2b30c7797.png)
 
@@ -262,19 +262,21 @@ SCCs           : 0 <br>
 Tests          : 6 <br>
 Cells          : 105 <br>
 
-# Day-5_Summary
+# Day-5 Summary
 
 In Synchronous clocks, events happen at a fixed phase relation whereas in asynchronous clocks that is untrue. Then there are logically exclusive clocks, which are passed through a mux logic, whereas in physically exclusive clocks, the sources are entirely different. set_clock_groups is used for establishing asynchronous and synchronous pairs. We can provide different properties like latency, uncertainty, transition and sense. Path specification is done by providing -from -to and -through flags. We would need to be careful of false paths and multicycle paths too. There is a provision of providing max and min delay for a path too.
 
-# Day-5_Labs
+# Day-5 Labs
   ## Revisit slack computation
   ![Screenshot from 2022-02-07 23-48-15](https://user-images.githubusercontent.com/73732594/152848018-392cb1af-684d-4ef0-9329-735edb5ddcb1.png)
 
-  ## CPPR
+  ## Clock Reconvergence Pessimism (CRP) Basics
   ![Screenshot from 2022-02-07 23-50-44](https://user-images.githubusercontent.com/73732594/152848433-4f1a25bf-72fd-412b-8bf7-99f640e3a2ce.png)
 
-  ## ECO
+  ## Clock Reconvergence Pessimism Removal (CRPR)
   ![Screenshot from 2022-02-07 23-52-54](https://user-images.githubusercontent.com/73732594/152848638-09978f8d-a4ad-40e7-805c-a0c47cc9c6a0.png)
+  
+  ## Engineering Change Order (ECO)
 
 ## Acknowledgements
 
