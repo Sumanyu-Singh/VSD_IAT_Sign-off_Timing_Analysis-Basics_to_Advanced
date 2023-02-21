@@ -116,7 +116,7 @@ An STA tool takes design, standard cell, constraints as input and perform timing
 
 At first, we need run below command for cloning:
 
-     **git clone https://github.com/vikkisachdeva/openSTA_sta_workshop** 
+     git clone https://github.com/vikkisachdeva/openSTA_sta_workshop
 
 Also we need to install OpenSTA separately
        
