@@ -114,17 +114,38 @@ An STA tool takes design, standard cell, constraints as input and perform timing
 
 ## Input files to OpenSTA
 
-The inputs to OpenSTA are design, standard cells associated with the netlist and the constraints.
- 
-![Screenshot from 2022-02-07 13-33-42](https://user-images.githubusercontent.com/73732594/152804282-a78572ba-9ba0-4f8c-b8d6-5331f0b7b408.png)
-The Netlist for the lab.
+At first, we need run below command for cloning:
 
-![Screenshot from 2022-02-07 13-33-42](https://user-images.githubusercontent.com/73732594/152804739-04a6178c-a739-4655-b760-b46288af2a59.png)
-A typical example for the standard cell from OSU-180.lib file.
+     **git clone https://github.com/vikkisachdeva/openSTA_sta_workshop** 
+
+Also we need to install OpenSTA separately
+       
+The inputs to OpenSTA are design, standard cells associated with the netlist and the constraints.
+Below is the tool flow for starting navigation through directories:
+
+![flow](https://user-images.githubusercontent.com/100671647/220419564-56b35da8-e773-45e1-a628-4d93ba179072.png)
+
+Below is the verilog file **simple.v** opened in gvim editor:
+
+![simple_v](https://user-images.githubusercontent.com/100671647/220421706-af7b19b3-0a97-4bb5-a9b4-607862a38947.png)
+
+Standard cells information is present in .lib file as can be seen from below:
+":syn off" command in vim editor turns syntax(highliting) off and ":set nu" command do line numbering
+
+![lib](https://user-images.githubusercontent.com/100671647/220422878-01bed6a9-8973-4e8e-a769-e69aeee33788.png)
+
+Example of nand2_1 cell from .lib file is shown below:
+
+![nand2_1](https://user-images.githubusercontent.com/100671647/220423953-bb2cba78-823f-46c4-a368-d0454266cdeb.png)
 
 ## Constraints creation
 
 The SDC file provided for the lab. This consists of the clock period, IO delays, input transition and capacitance delays. 
+
+Primary ports are defined with delays with associated clock: tau2015_clk
+set_input_delay 5 –max –rise [get_ports inp1] –clock tau2015_clk
+set_output_delay -10 –min –fall [get_ports out] –clock tau2015_clk
+
 ![Screenshot from 2022-02-07 19-46-47](https://user-images.githubusercontent.com/73732594/152805399-8f6b8c8b-793b-4286-81aa-5d88c9deecd8.png)
 
 ## OpenSTA Run script
