@@ -146,10 +146,10 @@ Below is the standard Synopsys Design Constraint (SDC) file (**simple.sdc**):
 ![sdc](https://user-images.githubusercontent.com/100671647/220425299-229a4c13-9963-48c3-8d1f-4012410dc4f6.png)
 
 Primary ports are defined with delays with associated clock: tau2015_clk
-set_input_delay 5 –max –rise [get_ports inp1] –clock tau2015_clk 
-set_output_delay -10 –min –fall [get_ports out] –clock tau2015_clk
 
-![Screenshot from 2022-02-07 19-46-47](https://user-images.githubusercontent.com/73732594/152805399-8f6b8c8b-793b-4286-81aa-5d88c9deecd8.png)
+set_input_delay 5 –max –rise [get_ports inp1] –clock tau2015_clk 
+
+set_output_delay -10 –min –fall [get_ports out] –clock tau2015_clk
 
 ## OpenSTA Run script
 
