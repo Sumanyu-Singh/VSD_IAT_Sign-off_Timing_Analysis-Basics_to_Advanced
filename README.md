@@ -240,8 +240,7 @@ Below is the timing report we have obtained from the netlist and other inputs be
 
 Report in run3.log is below:
 
-![image](https://user-images.githubusercontent.com/100671647/220652335-8647047f-bf9f-495e-a944-a57385ed5ee4.png)
-
+![image](https://user-images.githubusercontent.com/100671647/220656752-c8800963-d67b-4dcc-a485-7267efc7d5d5.png)
 
 # Day-3 Summary
 
