@@ -281,7 +281,7 @@ Sometimes tools cannot set this clock gating checks and gives error, so we need 
 
 In Synchronous clocks, events happen at a fixed phase relation whereas in asynchronous clocks that is untrue. Then there are logically exclusive clocks, which are passed through a mux logic, whereas in physically exclusive clocks, the sources are entirely different. set_clock_groups is used for establishing asynchronous and synchronous pairs. We can provide different properties like latency, uncertainty, transition and sense. Path specification is done by providing -from -to and -through flags. We would need to be careful of false paths and multicycle paths too. There is a provision of providing max and min delay for a path too.
 
-**Clock Groups**
+**Different types of Clock Groups**
 
 **Synchronous and Asynchronous Clocks**
 
@@ -301,5 +301,18 @@ In Synchronous clocks, events happen at a fixed phase relation whereas in asynch
 Multiple **Clock Properties** are shown below:
 
 ![clk_prop](https://user-images.githubusercontent.com/100671647/220547168-52b07596-d339-4ac8-9c62-e3cd308e0e92.png)
+
+**Timing Exceptions:** These are particular set of commands in STA that can modify the default behaviour.
+Before that, let's understand "Path Specification". As there could be multiple paths between start point and end point and we want to change the default behaviour of a particular path. So, we need to specify that path.
+
+![path_specif](https://user-images.githubusercontent.com/100671647/220549282-b10777ca-46f4-4a13-af49-37d68aa6b648.png)
+
+Path exception is done by typically three commands:
+- from (start points: either ports or typically clock pin of flops in design)
+- to (end point)
+- through (nodes between start point and end point)
+
+
+
 
 
