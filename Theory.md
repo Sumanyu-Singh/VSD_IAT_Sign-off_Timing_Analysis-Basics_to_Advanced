@@ -78,6 +78,7 @@ Apart from Hold and Setup checks(which happens in data pins with respect to data
 ![other_timing](https://user-images.githubusercontent.com/100671647/220512531-b57a8054-4125-4dd7-9970-5d01c9a2d661.png)
 
 **Design Rule Checks**
+
 Design Rule Checks specifies about
 1. Slew/Transition Analysis
   
@@ -96,7 +97,7 @@ Design Rule Checks specifies about
     
 ![drcs_n_pwc](https://user-images.githubusercontent.com/100671647/220513015-ca6925ec-92e8-4363-8a65-c7a4098aec69.png)
 
-**Latch Timing**
+**Latch Timing:**
 **Latch can start sampling data from the rising edge(or falling edge) itself and continue sampling till the respective falling edge (or rising edge)** because latches are level sensitive whereas **Flipflop can only sample the data "at" Rising edge or Negative edge** because flipflops are edge sensitive. Both holds the data when they are disable (Latch disable at level and Flipflop disable just after triggering level).
 
 - In case of STA, Enable pin of the latch acts like a clock to a latch(as latches do not have clock input).
@@ -105,8 +106,7 @@ Generally designers prefer flip flops over latches because of this edge-triggere
     
 Latch-based designs are preferred in case of clock frequency in GHz (in high-speed designs). In flip-flop-based high-speed designs, maintaining clock skew is a problem, but latches ease this problem.
     
-**Time Borrowing**
-Time borrowing is the property of a latch by virtue of which a path ending at a latch can borrow time from the next path in pipeline such that the overall time of the two paths remains the same. The time borrowed by the latch from next stage in pipeline is, then, subtracted from the next path's time.
+**Time Borrowing** is the property of a latch by virtue of which a path ending at a latch can borrow time from the next path in pipeline such that the overall time of the two paths remains the same. The time borrowed by the latch from next stage in pipeline is, then, subtracted from the next path's time.
 
 ![time_borrow](https://user-images.githubusercontent.com/100671647/220513304-3218e6a7-b031-4cab-a3be-bb75f136551b.png)
 
