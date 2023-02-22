@@ -69,6 +69,69 @@ There are exceptions to design constraints which relax the requirements set by o
 
 Apart from setup and hold checks, STA also has other timing checks in place like clock gating checks, async pin checks and data to data checks. We also make a note of the rise and fall slew transitions. We also have to provide load analysis by specifying min and max capacitances on the IO net, and corresponding fanout load on ports and output pins. The skew between launch and capture clock waveforms also needs to be taken into account, the skew is positive if the capture flop clock leads the launch flop clock. The duty cycle of the clock is limited by various parameters apart from the technology node. Latch based designs allow more flexibility in timing and also aids time borrowing. A typical STA text report contains startpoint, endpoint, 'max' signifies setup time check and the nodes in the design mentioned as paths, whose respective delays are taken into account.   
 
+**Other Timing Checks**
+Apart from Hold and Setup checks(which happens in data pins with respect to data pins) STA also dose other types of check like
+
+1.Clock Gating Checks(done on clock enable pin with respect to the clock pin)
+
+2.Async Pin Checks(checks when reset pin, set pin, clear pin can be inserted with respect to clock)
+
+3.Data to Data Checks(identify may skew between 2 pins)
+
+**Design Rule Checks**
+Design Rule Checks specifies about
+
+1. Slew/Transition Analysis
+
+2. Load Analysis
+We can specify minimum and maximum capacitance on ports and nets.
+Also specify the maximum fanout load on ports and output pins.
+3. Clock Skew Analysis
+It is difference in delay of the clock at different points.
+It is basically the delay between the launch clock and capture clock.
+Skew is said to be positive when caputre clock has more delay.
+**Other Timing Checks**
+Apart from Hold and Setup checks(which happens in data pins with respect to data pins) STA also dose other types of check like 
+- Clock Gating Checks(done on clock enable pin with respect to the clock pin)
+- Async Pin Checks(checks when reset pin, set pin, clear pin can be inserted with respect to clock) 
+- Data to Data Checks(identify may skew between 2 pins)
+    
+![other_timing](https://user-images.githubusercontent.com/100671647/220512531-b57a8054-4125-4dd7-9970-5d01c9a2d661.png)
+
+**Design Rule Checks**
+Design Rule Checks specifies about
+1. Slew/Transition Analysis
+  
+2. Load Analysis
+- We can specify minimum and maximum capacitance on ports and nets.
+- Also specify the maximum fanout load on ports and output pins.
+      
+3. Clock Skew Analysis
+- It is difference in delay of the clock at different points.
+- It is basically the delay between the launch clock and capture clock.
+- Skew is said to be positive when caputre clock has more delay.
+    
+4. Pulse Width Checks
+- As clock travels through the path the clock pulse can change(can happen when rise delay and fall delay are not same) called as Shrinked Clock.
+- If this shrinked clock is below the certain value then pulse width violation happens.
+    
+![drcs_n_pwc](https://user-images.githubusercontent.com/100671647/220513015-ca6925ec-92e8-4363-8a65-c7a4098aec69.png)
+
+**Latch Timing**
+**Latch can start sampling data from the rising edge(or falling edge) itself and continue sampling till the respective falling edge (or rising edge)** because latches are level sensitive whereas **Flipflop can only sample the data "at" Rising edge or Negative edge** because flipflops are edge sensitive. Both holds the data when they are disable (Latch disable at level and Flipflop disable just after triggering level).
+
+- In case of STA, Enable pin of the latch acts like a clock to a latch(as latches do not have clock input).
+    
+Generally designers prefer flip flops over latches because of this edge-triggered property, which makes their life easy to do analysis and interpretation the design. 
+    
+Latch-based designs are preferred in case of clock frequency in GHz (in high-speed designs). In flip-flop-based high-speed designs, maintaining clock skew is a problem, but latches ease this problem.
+    
+**Time Borrowing**
+Time borrowing is the property of a latch by virtue of which a path ending at a latch can borrow time from the next path in pipeline such that the overall time of the two paths remains the same. The time borrowed by the latch from next stage in pipeline is, then, subtracted from the next path's time.
+
+![time_borrow](https://user-images.githubusercontent.com/100671647/220513304-3218e6a7-b031-4cab-a3be-bb75f136551b.png)
+
+
 # Day-3 Summary
 
 When we have multiple clocks, in STA, a possible common base period is choses, and a restrictive setup and hold check is followed. By default, the checks are restrictive in nature. The inclusion of falling edge clock on capture after positive edge on launching flop may lead to a half cycle period delay. Timing arcs consist of cell and net arcs. Combinational arcs go from input pins to the output pin, whereas sequential arcs consist of CLK->D arc (Setup/hold arc), CLK->OUT (Propagation delay) and CLK->RST (Recovery/Removal). We are also introduced to the concept of unateness and non-unateness. Cell delays are in general fuction of input transition and capacitive load. Clock latency can be from the source and towards the network. Unlike ideal clocks, real clocks have jitter which leads to uncertainty of the position of rising/falling edge.
