@@ -281,3 +281,25 @@ Sometimes tools cannot set this clock gating checks and gives error, so we need 
 
 In Synchronous clocks, events happen at a fixed phase relation whereas in asynchronous clocks that is untrue. Then there are logically exclusive clocks, which are passed through a mux logic, whereas in physically exclusive clocks, the sources are entirely different. set_clock_groups is used for establishing asynchronous and synchronous pairs. We can provide different properties like latency, uncertainty, transition and sense. Path specification is done by providing -from -to and -through flags. We would need to be careful of false paths and multicycle paths too. There is a provision of providing max and min delay for a path too.
 
+**Clock Groups**
+
+**Synchronous and Asynchronous Clocks**
+
+![syn_asyn_clocks](https://user-images.githubusercontent.com/100671647/220545474-2cc6247a-60f4-4e15-acd0-ba3f33a47980.png)
+
+**Logically and Physically Exclusive Clocks**
+
+![logi_phy_excl_clocks](https://user-images.githubusercontent.com/100671647/220546012-c5e59176-d839-4d36-b6da-ef516d1c8c7b.png)
+
+"**set_clock_groups**" command: By default STA assumes synchronous clocks.
+![set_clk_grp](https://user-images.githubusercontent.com/100671647/220546439-174097b8-1bc2-4033-924a-2966c4d46da2.png)
+
+- Below picture shows what happens When only one group is specified:
+
+![only_one_grp](https://user-images.githubusercontent.com/100671647/220546818-0ab95b66-a833-4c9a-8889-aca7228dd085.png)
+
+Multiple **Clock Properties** are shown below:
+
+![clk_prop](https://user-images.githubusercontent.com/100671647/220547168-52b07596-d339-4ac8-9c62-e3cd308e0e92.png)
+
+
