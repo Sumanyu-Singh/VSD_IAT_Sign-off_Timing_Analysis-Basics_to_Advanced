@@ -151,10 +151,10 @@ The .lib file is an ASCII representation of the timing and powerparameters assoc
 **Q1) Find all the cells in simple_max.lib.**
 
 - To find number of cells in simple_max.lib file type below command:
-      more simple_max.lib | grep -c " End cell"
+       more simple_max.lib | grep -c " End cell"
       
 - In order to list all cells in a library and dump in a "all_cell" file, type below command:
-      more simple_max.lib | grep " End cell" | tee all_cell
+       more simple_max.lib | grep " End cell" | tee all_cell
 
 **Snapshot below showing execution of above commands** (a lot more cells are there in the list which are not shown)
 
@@ -162,16 +162,27 @@ The .lib file is an ASCII representation of the timing and powerparameters assoc
 
 
 **Q2) Find all the pins of the cell NAND2_X1 in simple_max.lib**
+- From below picture we can see that there are 1 output and 2 input pins for cell NAND2_x1
 
-211 and 3.
+![pins_of_cell](https://user-images.githubusercontent.com/100671647/220633263-2fdb469a-2c6e-4b83-868d-67e3ff03a159.png)
 
-• What difference you see between NAND2_X1 and NAND3_X1
+
+**Q3) What difference you see between NAND2_X1 and NAND3_X1**
+- NAND2_X1 is 2 input nand gate and NAND3_X1 is 3 input nand gate.
+- Also Capacitance values are differnet.
+
+![image](https://user-images.githubusercontent.com/100671647/220634764-4e9b0de2-9cc9-4517-ba00-8e0eda4d0f9d.png)
 
 The max capacitance increases multifold, and the number of input pins.
 
-• What is the difference between ‘simple_max.lib’ and ‘simple_min.lib
+**Q4) What is the difference between ‘simple_max.lib’ and ‘simple_min.lib’**
+- I compared the file and found they have differnet values in cell_ fall, fall_transition, cell_rise and rise_transitionof all the cells.
+- Fabrication process variations could either increase or decrease the delay of a cell. So we need to set early and late value while setting the derate factor. STA tool would consider early or late timing derate based on the path and type of analysis.
+By using below command I checked the difference between both files:
+      gvimdiff simple_max.lib simple_min.lib
+      
+![diff](https://user-images.githubusercontent.com/100671647/220635945-26cfcc2d-2a79-4f22-a50c-81ef3e5864bc.png)
 
-Fabrication process variations could either increase or decrease the delay of a cell. So we need to set early and late value while setting the derate factor. STA tool would consider early or late timing derate based on the path and type of analysis.
 
 ## Understanding Lib Parsing
 
