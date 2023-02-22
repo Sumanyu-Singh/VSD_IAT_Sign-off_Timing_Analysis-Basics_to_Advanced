@@ -325,7 +325,10 @@ Example: from(F1/CK)-through(U1/Z)-to(F5/D)
 
 ![image](https://user-images.githubusercontent.com/100671647/220596824-4038c91b-5561-42a5-974f-c6f9c10df4ba.png)
 
+**Multiple MOdes:**
+"**set_case_analysis**" command is used to specify a certain portion of the design and specify a constant value. That net may or may not be a constant value in the design netlist but we can overwrite it using "set_case_analysis" command.
 
+For Example: We have a 2:1 mux in our design with sel(select line), Tclk (In0), Fclk(In1) as Inputs and we want that Fclk(functional clock) should be propagated. We can do this by "set_case_analysis" command by setting sel=1. Note that we have not connected sel=1 in the netlist.
 
 
 **ECO – Engineering Change Order**
@@ -336,7 +339,7 @@ and also suggest the changes we need to do in order to close the
 issue. 
 • The suggested change is captured in an eco file.
 • In this lab we will focus on ECO for timing purposes, this is done to fix 
-setup and hold violation
+setup and hold violation.
 
 
 
