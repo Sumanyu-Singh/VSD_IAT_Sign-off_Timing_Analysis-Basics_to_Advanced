@@ -22,27 +22,27 @@ It starts with basics of Static Timing Analysis, timing paths, startpoint, endpo
   * [Understanding Lib Parsing](#understanding-lib-parsing)
   * [Understanding SPEF file and SPEF parsing](#understanding-spef-file-and-spef-parsing)
   * [Understanding Timing Reports](#understanding-timing-reports)
-- [Day-3 Summary](#day-3-summary)
+* [Day-3 Summary](#day-3-summary)
  
-- [Day-3 Labs](#day-3-labs)
-  - [Understanding full reg to reg STA analysis](#understanding-full-reg-to-reg-sta-analysis)
-  - [Understanding Slack computation](#understanding-slack-computation)
+* [Day-3 Labs](#day-3-labs)
+  * [Understanding full reg to reg STA analysis](#understanding-full-reg-to-reg-sta-analysis)
+  * [Understanding Slack computation](#understanding-slack-computation)
   
-- [Day-4 Summary](#day-4-summary)
+* [Day-4 Summary](#day-4-summary)
   
-- [Day-4 Labs](#day-4-labs)
-  - [Understanding clock gating check](#understanding-clock-gating-check)
-  - [Understanding Async pin checks](#understanding-async-pin-checks)
+* [Day-4 Labs](#day-4-labs)
+  * [Understanding clock gating check](#understanding-clock-gating-check)
+  * [Understanding Async pin checks](#understanding-async-pin-checks)
   
-- [Day-5 Summary](#day-5-summary)
+* [Day-5 Summary](#day-5-summary)
 
-- [Day-5 Labs](#day-5-labs)
-  - [Revisit slack computation](#revisit-slack-computation)
-  - [Clock Reconvergence Pessimism (CRP) Basics](#clock-reconvergence-pessimism-crp-basics)
-  - [Clock Reconvergence Pessimism Removal (CRPR)](#clock-reconvergence-pessimism-removal-crpr)
-  - [Engineering Change Order (ECO)](#engineering-change-order-eco)
-- [Acknowledgements:](#acknowledgements)
-- [Author:](#author)
+* [Day-5 Labs](#day-5-labs)
+  * [Revisit slack computation](#revisit-slack-computation)
+  * [Clock Reconvergence Pessimism (CRP) Basics](#clock-reconvergence-pessimism-crp-basics)
+  * [Clock Reconvergence Pessimism Removal (CRPR)](#clock-reconvergence-pessimism-removal-crpr)
+  * [Engineering Change Order (ECO)](#engineering-change-order-eco)
+* [Acknowledgements:](#acknowledgements)
+* [Author:](#author)
 
 --------
 
