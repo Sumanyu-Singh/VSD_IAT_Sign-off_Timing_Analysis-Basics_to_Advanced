@@ -124,9 +124,13 @@ When we have multiple clocks, in STA, a possible common base period is choses, a
 
 Two rules for **Hold Check**
 
-1. ![rule_1](https://user-images.githubusercontent.com/100671647/220515371-45e7ad16-81da-44c8-b37d-e00644d29214.png)
+1.   
 
-2. ![rule_2](https://user-images.githubusercontent.com/100671647/220515779-c6f16ea8-c20f-4622-b460-ce879a9fe99d.png)
+![rule_1](https://user-images.githubusercontent.com/100671647/220515371-45e7ad16-81da-44c8-b37d-e00644d29214.png)
+
+2.
+
+![rule_2](https://user-images.githubusercontent.com/100671647/220515779-c6f16ea8-c20f-4622-b460-ce879a9fe99d.png)
 
    
 **Two types of Timing Arch** 
@@ -143,7 +147,7 @@ Two rules for **Hold Check**
 
 **Positive, Negative and Non Unate Arch**
 
-**Positive Unate Arch** follows the input in same direction. It basically tells us that when input rises the output also rises or when input falls the output also going to fall. **Negative Unate Arch** follows the input in opposite direction. It basically tells us that when input rises the output falls or when input rises the output also going to fall. In **Non Unate Arch** output cant be predicted the output when input changes.
+**Positive Unate Arch** follows the input in same direction. It basically tells us that when input rises the output also rises or when input falls the output also going to fall. **Negative Unate Arch** follows the input in opposite direction. It basically tells us that when input rises the output falls or when input rises the output also going to fall. In **Non Unate Arch** output cant be predicted when input changes.
     
 ![pos_neg_non_unate_arch](https://user-images.githubusercontent.com/100671647/220517519-88fdd12c-a4e3-4b2d-a403-6c7803ad0168.png)
 
@@ -151,37 +155,39 @@ Two rules for **Hold Check**
     
 ![cell_delays](https://user-images.githubusercontent.com/100671647/220517750-0a1bc8dc-6869-4b55-b82f-4b46531abefa.png)
 
-### Clock Skew
-- Clock Skew is the time difference between arrival of the same edge of a clock signal at the Clock pin of the capture flop and launch flop.
-- It is basically the delay difference between the two clocks.
+**Clock Skew** is the time difference between arrival of the same edge of a clock signal at the Clock pin of the capture flop and launch flop. It is basically the delay difference between the two clocks.
     
-![Screenshot (2466)](https://user-images.githubusercontent.com/120498080/220183083-b319876a-aa90-4a5a-88a3-0c303cbd7fa3.png)
+**Positive and Negative Skew**
+
+![pos_neg_skew](https://user-images.githubusercontent.com/100671647/220528422-7b53e8c3-e424-431a-bab8-fb928d179830.png)
+
 - So because of the positive skew we got the extra time to meet setup and it makes setup time easer to meet, whereas to meet hold time we need to keep the data stable for more time. 
-    
-![Screenshot (2467)](https://user-images.githubusercontent.com/120498080/220183110-e4aa164a-f019-4664-9bec-d9922065a86c.png)
+ 
 - So because of the negative skew we got the less time to meet setup and it makes setup time difficult to meet, whereas to meet hold time we need to keep the data stable for less time. 
  
-### Clock Latency
-- The time taken by Clock signal to reach from clock source to the clock pin of a particular flip flop is called as Clock latency.
-    
-![Screenshot (2468)](https://user-images.githubusercontent.com/120498080/220183662-94cbea73-03f0-4a70-ae2b-1df8b2e0e1a4.png)
+**Clock Latency:** The time taken by Clock signal to reach from clock source to the clock pin of a particular flip flop is called as Clock latency.
+
+![clk_latency](https://user-images.githubusercontent.com/100671647/220528882-24a3d88b-56c0-439b-8751-9853db790ac5.png)
 
 
-### Clock Jitter
-- Clock jitter is a characteristic of the clock source and the clock signal environment. It can be defined as “deviation of a clock edge from its ideal location.” Clock jitter is typically caused by clock generator circuitry, noise, power supply variations, interference from nearby circuitry etc.
-    
-![Screenshot (2469)](https://user-images.githubusercontent.com/120498080/220183707-c17713db-3ef3-41fb-9cad-e52ec50015ce.png)
+**Clock Jitter:** is a characteristic of the clock source and the clock signal environment. It can be defined as “deviation of a clock edge from its ideal location.” Clock jitter is typically caused by clock generator circuitry, noise, power supply variations, interference from nearby circuitry etc.
+
+![clk_jitter](https://user-images.githubusercontent.com/100671647/220529452-d8bab160-1675-46b0-a89d-a232d39fe761.png)
+
+**Setup Check and Setup Check With Clock Skew and Jitter**
+
+![set_up_chk_with_jitter](https://user-images.githubusercontent.com/100671647/220529986-686a765d-8a45-4db0-8f1f-7a4b1f07b71a.png)
+
+![image](https://user-images.githubusercontent.com/100671647/220530944-1351f0fb-0a3c-4e7c-be0f-05ef6c17fee2.png)
+
  
-### Setup Check
-![Screenshot (2471)](https://user-images.githubusercontent.com/120498080/220192551-c8c93b42-4f29-4820-a7e4-f183a3627173.png)
-![Screenshot (2473)](https://user-images.githubusercontent.com/120498080/220192560-3d0a3679-87d6-4589-b753-24e05ef6283b.png)
-![Screenshot (2477)](https://user-images.githubusercontent.com/120498080/220192613-e7588eea-9342-48f5-856b-d8b4b2c32a6f.png)
- 
-### Hold Check
-![Screenshot (2474)](https://user-images.githubusercontent.com/120498080/220193019-72e6054d-afe9-4514-b16e-cb1423c7ac97.png)
-![Screenshot (2476)](https://user-images.githubusercontent.com/120498080/220193051-2bfa198c-6317-495f-977e-a2532b20f1ff.png)
-![Screenshot (2478)](https://user-images.githubusercontent.com/120498080/220193081-4fd32cf8-2f18-4349-8c4a-9069564219f8.png)
- 
+**Hold Check and Hold Check With Clock Skew and Jitter**
+
+![hold_chk_with_jitte](https://user-images.githubusercontent.com/100671647/220530542-ae96f236-a05b-4e75-bee4-e1108d0ad996.png)
+
+![image](https://user-images.githubusercontent.com/100671647/220531097-fc1fa03a-7d9d-4b3e-ac4d-d404a40ec3a9.png)
+
+
     
 ### CRPR-Clock Reconvergence Pessimism Removal
  
