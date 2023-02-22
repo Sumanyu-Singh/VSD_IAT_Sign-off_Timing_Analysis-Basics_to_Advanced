@@ -125,7 +125,7 @@ For running the OpenSTA, we use below command
 Below are the reports (can be seen in "run1.log" file) after running OpenSTA:
 
 ![violated](https://user-images.githubusercontent.com/100671647/220624097-71471f6e-b7c0-4c71-aa0c-1619ed7625f6.png)
-![met](https://user-images.githubusercontent.com/100671647/220427821-abb25d94-5f2b-44c9-8176-be51baffe25c.png)
+![met](https://user-images.githubusercontent.com/100671647/220625551-81839db1-2ed4-454e-bcea-b5447e3093ec.png)
 
 In 1st, the timing checks aren't met(VIOLATED) since the slack is negative but in 2nd it is MET (slack is positive).
 
