@@ -277,14 +277,32 @@ For running STA use below command:
 ```
 ![run_tcl](https://user-images.githubusercontent.com/100671647/220710442-39a32777-f313-473d-bc1e-ad3c7b80d35a.png)
 
-Generated run_1.log file is as below:
+**Generated run_1.log file is as below:**
 
 ![run1_log](https://user-images.githubusercontent.com/100671647/220711265-c0c1e634-0b76-492d-93b8-48a370096c72.png)
 
+Add below command in **run.tcl**, this will report slack compulation w.r.t 2 path as shown in below image 
+```
+    report_checks –from F1/CK -endpoint_count 100
+```
+Below is generated result of STA run(run_1.log file):
 
+![image](https://user-images.githubusercontent.com/100671647/220716644-244a83fd-b283-4c20-95d6-505a8b847779.png)
 
+**Exercises:**
 
+- **Q1) Change the number of paths being reported to 100**
+Add below command in **run.tcl** to do so, This will report slack compulation w.r.t 8 path as shown in below image (generated result) which is the maximum number pf possible path in the given design :-
 
+```
+    report_checks –from F1/CK -endpoint_count 100
+```
+
+**Then, Run STA with below command:**
+```
+   sta run.tcl -exit | tee out.txt
+```
+**Generated Result of above command, shows slack computation of all possible paths for given design example**
 
 
 # Day-4 Summary
