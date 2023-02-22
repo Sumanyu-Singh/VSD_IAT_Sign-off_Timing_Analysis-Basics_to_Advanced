@@ -145,13 +145,11 @@ Two rules for **Hold Check**
 
 **Positive Unate Arch** follows the input in same direction. It basically tells us that when input rises the output also rises or when input falls the output also going to fall. **Negative Unate Arch** follows the input in opposite direction. It basically tells us that when input rises the output falls or when input rises the output also going to fall. In **Non Unate Arch** output cant be predicted the output when input changes.
     
+![pos_neg_non_unate_arch](https://user-images.githubusercontent.com/100671647/220517519-88fdd12c-a4e3-4b2d-a403-6c7803ad0168.png)
 
-
- 
-### Cell Delays 
-- Cell Arch have these Cell Delays 
+**Cell Delays:** Cell Arch have these Cell Delays 
     
-![Screenshot (2465)](https://user-images.githubusercontent.com/120498080/220181078-10ab6c17-25f9-42b2-932d-06c5c93c13a5.png)
+![cell_delays](https://user-images.githubusercontent.com/100671647/220517750-0a1bc8dc-6869-4b55-b82f-4b46531abefa.png)
 
 ### Clock Skew
 - Clock Skew is the time difference between arrival of the same edge of a clock signal at the Clock pin of the capture flop and launch flop.
