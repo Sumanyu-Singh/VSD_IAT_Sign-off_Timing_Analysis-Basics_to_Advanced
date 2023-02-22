@@ -234,7 +234,7 @@ Below is the timing report we have obtained from the netlist and other inputs be
 
 ![report](https://user-images.githubusercontent.com/100671647/220647268-42ead6c6-9e18-40c1-a8c4-b79b133222a5.png)
 
-**By Changing number of paths to 5 we see below reports getting generated and saved in run3.log file**
+**By Changing number of paths to 5 we see below reports getting generated and saved in run_3.log file**
 
 ![image](https://user-images.githubusercontent.com/100671647/220650837-cec789c9-c71d-4d4f-a0b7-f561230066e8.png)
 
