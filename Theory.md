@@ -116,6 +116,7 @@ Latch-based designs are preferred in case of clock frequency in GHz (in high-spe
 When we have multiple clocks, in STA, a possible common base period is choses, and a restrictive setup and hold check is followed. By default, the checks are restrictive in nature. The inclusion of falling edge clock on capture after positive edge on launching flop may lead to a half cycle period delay. Timing arcs consist of cell and net arcs. Combinational arcs go from input pins to the output pin, whereas sequential arcs consist of CLK->D arc (Setup/hold arc), CLK->OUT (Propagation delay) and CLK->RST (Recovery/Removal). We are also introduced to the concept of unateness and non-unateness. Cell delays are in general fuction of input transition and capacitive load. Clock latency can be from the source and towards the network. Unlike ideal clocks, real clocks have jitter which leads to uncertainty of the position of rising/falling edge.
 
 **Multiple Clocks:** When different types of clock are present(of different frequency) then setup check is calculated or the most restrictive setup is identified by first expanding a clock by a **common base period** and in that whichever is the closest launch and capture which is used find the most restrictive setup. The hold check is dependent upon the setup check.
+
 **Setup and Hold Check**
 
 ![setup_hold_chk](https://user-images.githubusercontent.com/100671647/220534395-fae1ed3d-c9b7-4f3e-8c5e-47e2dabc1566.png)
@@ -208,6 +209,73 @@ Two rules for **Hold Check**
 # Day-4 Summary
 
 Crosstalk may lead to delta delays and glitches. Switching activity affected by coupling of aggresor and victim, leads to delta delay which may cause timing failure. Glitching is caused due to sudden charge transfer on a stable net which may cause functional failure. Variation could be inter-die and intra-die. The former is of global and systematic, and latter is of on-chip and random nature. In clock gating transition on gating pin, shouldn't create unnecessary active edge of the clock in the fanout. Async pin checks are needed to avoid unknown state. Recovery and removal time checks for assertion and deassertions need to be checked therefore.
+
+**Crosstalk and Noise**
+
+In STA, crosstalk and noise can affect the timing of signals and ultimately impact the performance and reliability of the digital circuit.
+
+Crosstalk refers to the phenomenon of a signal on one wire interfering with the signal on an adjacent wire. This can happen due to capacitive coupling between the wires, and it can lead to errors in signal timing. Crosstalk can cause a signal to arrive at a destination later or earlier than expected, which can result in setup and hold time violations. In static timing analysis, crosstalk is typically modeled by adding delays to the timing paths in the affected nets.
+
+Noise refers to any unwanted variation in the signal that is not related to the desired signal. In digital circuits, noise can be caused by a variety of sources, such as power supply fluctuations, ground bounce, and electromagnetic interference. Noise can also lead to errors in signal timing, similar to crosstalk. In static timing analysis, noise is typically modeled by adding jitter to the arrival times of signals.
+
+**Crosstalk and Noise Removal:** To account for crosstalk and noise in static timing analysis, designers typically use conservative timing constraints and design margins. Additionally, they may use specialized tools to model and analyze crosstalk and noise effects, such as signal integrity analysis tools.
+    
+![cross_talk](https://user-images.githubusercontent.com/100671647/220541316-cbd7263e-c12c-4b72-a9c3-59c3c6bd9772.png)
+
+- In this when both aggressor is changing from 0 to 1 and victim is also changing in the same direction so it can couse the victim signal to change faster, hence rise time changes and **delay decreases**
+- If the aggressor and victim are changing in opposite direction then because of coupling caps aggressor will try to push the victim signal in same direction, hence chage becomes slower in victim which in **increases delay**
+- STA take this changes into consideration and accordingly calculate setup and hold time.
+    
+![cross_talk_glitches](https://user-images.githubusercontent.com/100671647/220541761-40bd520b-d95f-4232-ad43-c672a260b60c.png)
+
+- When aggressor is changing whereas victim signal in not changing so we can have glich in the victim signal which could lead to functional failure. So STA need to make sure these glitches are not present or should be below a threshold value.
+    
+**Process Variation**
+
+- Sometimes we have process variation(can have differnt delay or transition time)within a chip or from wafer to wafer or within the wafer. So STA need to take this into account.
+    
+![pv](https://user-images.githubusercontent.com/100671647/220542088-a3acfc19-c77b-451b-aeef-085184d85e3a.png)
+    
+### Clock Gating Checks 
+
+Clock gating is a technique used in digital circuit design to reduce power consumption by selectively turning off clock signals to unused circuit blocks. However, clock gating can also have an impact on the timing of a design.
+
+There are two main types of clock gating checks in STA:
+
+- 1. Clock gating analysis: This type of check analyzes the clock gating logic to ensure that it meets the design's timing requirements. The analysis considers the setup and hold times of the gated signals as well as the delay through the clock gating logic itself.
+
+- 2. Clock gating optimization: This type of check looks for opportunities to optimize the clock gating logic to improve the overall timing of the design. The optimization may involve changing the gating logic or adjusting the timing constraints to make better use of the clock gating.
+
+
+- A clock gating check occurs when a gating signal can control the path of a clock signal at a logic cell. For example when a clock and enable signal is fed as input to an AND gate.
+- The signal must be used as clock downstream, like feed a flop or latch clock pin or feed output port or feed generated clock.
+- Intention of this check is that transition on gating pin does not Create unnecessary active edge of the clock in the fanout.
+
+**Active High and Active Low Clock Gating Check**
+
+![image](https://user-images.githubusercontent.com/100671647/220543032-0340673c-b53b-433c-899d-8acabb0b50f8.png)
+
+- So, In case of AND and NAND gates, clock gating checks that during setup check the enable should become stable sometime before the clock rising edge(so that coack has enough setup time) and during hold check the enable should become stable sometime after the clock rising edge.
+   
+- And, In case of OR or NOR gates, clock gating checks that before some time and after some time of the low value of the clock enable pin should be stable.
+    
+Sometimes tools cannot set this clock gating checks and gives error, so we need to do it manually by using this command
+```
+   set_clock_gating_check
+```
+  
+**Checks on Async Pins**
+
+- Async Pins in the designes are reset or clear pins 
+- These checks are needed only of asynchronous pins not for synchronous pins(beacure synchronous reset pins come from flops which is alraedy synchronised )
+    
+![async_pin_checks](https://user-images.githubusercontent.com/100671647/220543540-a2119665-1216-4106-bec6-1cc5365db624.png)
+- Assertion means clear is on and outputs are zero, which is indepeant of clock
+- De-assertion means clear is off and output is dependent on input and clock.
+    
+![asser_deasser](https://user-images.githubusercontent.com/100671647/220544149-3eeeb5ca-4087-48c1-8fca-2824ac374e7b.png)
+
+- Assertion to De-assertion change should not happen very close to clock edge, it should happen sometime before clock edge and sometime after clock edge which is known as the **Recovery Time** and this time requirement is given by the logival liblary of the flop.
 
 # Day-5 Summary
 
