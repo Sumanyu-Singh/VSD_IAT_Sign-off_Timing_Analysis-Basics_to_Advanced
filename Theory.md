@@ -115,6 +115,91 @@ Latch-based designs are preferred in case of clock frequency in GHz (in high-spe
 
 When we have multiple clocks, in STA, a possible common base period is choses, and a restrictive setup and hold check is followed. By default, the checks are restrictive in nature. The inclusion of falling edge clock on capture after positive edge on launching flop may lead to a half cycle period delay. Timing arcs consist of cell and net arcs. Combinational arcs go from input pins to the output pin, whereas sequential arcs consist of CLK->D arc (Setup/hold arc), CLK->OUT (Propagation delay) and CLK->RST (Recovery/Removal). We are also introduced to the concept of unateness and non-unateness. Cell delays are in general fuction of input transition and capacitive load. Clock latency can be from the source and towards the network. Unlike ideal clocks, real clocks have jitter which leads to uncertainty of the position of rising/falling edge.
 
+**Multiple Clocks:** When different types of clock are present(of different frequency) then setup check is calculated or the most restrictive setup is identified by first expanding a clock by a **common base period** and in that whichever is the closest launch and capture which is used find the most restrictive setup. The hold check is dependent upon the setup check.
+**Setup and Hold Check**
+
+![setup_chk](https://user-images.githubusercontent.com/100671647/220515106-0c4a68ac-9842-43b8-a31a-58e8994af3e9.png)
+
+![hold_chk](https://user-images.githubusercontent.com/100671647/220515581-5490a958-683e-4d97-a949-41d4f5ee70cd.png)
+
+Two rules for **Hold Check**
+
+1. ![rule_1](https://user-images.githubusercontent.com/100671647/220515371-45e7ad16-81da-44c8-b37d-e00644d29214.png)
+
+2. ![rule_2](https://user-images.githubusercontent.com/100671647/220515779-c6f16ea8-c20f-4622-b460-ce879a9fe99d.png)
+
+   
+**Two types of Timing Arch** 
+
+1. **Cell Arch** - It is the input to output connection in the cell present in logical libraries . These arch will have information about the input-output functionality, rise and fall time, delays, etc. 
+
+2. **Net Arch** - It connects one cell to other cell and there are ways to calculate the information about the cell to cell rise and fall time, delays, etc.
+
+![archs](https://user-images.githubusercontent.com/100671647/220516180-39753771-5610-4b2b-abfd-72875bb1e656.png)
+
+**Combinational and Sequential Archs**
+
+![com_n_seq_arch](https://user-images.githubusercontent.com/100671647/220516520-e2ae3947-9a78-429a-813f-9c563e955ce5.png)
+
+**Positive, Negative and Non Unate Arch**
+
+**Positive Unate Arch** follows the input in same direction. It basically tells us that when input rises the output also rises or when input falls the output also going to fall. **Negative Unate Arch** follows the input in opposite direction. It basically tells us that when input rises the output falls or when input rises the output also going to fall. In **Non Unate Arch** output cant be predicted the output when input changes.
+    
+
+
+ 
+### Cell Delays 
+- Cell Arch have these Cell Delays 
+    
+![Screenshot (2465)](https://user-images.githubusercontent.com/120498080/220181078-10ab6c17-25f9-42b2-932d-06c5c93c13a5.png)
+
+### Clock Skew
+- Clock Skew is the time difference between arrival of the same edge of a clock signal at the Clock pin of the capture flop and launch flop.
+- It is basically the delay difference between the two clocks.
+    
+![Screenshot (2466)](https://user-images.githubusercontent.com/120498080/220183083-b319876a-aa90-4a5a-88a3-0c303cbd7fa3.png)
+- So because of the positive skew we got the extra time to meet setup and it makes setup time easer to meet, whereas to meet hold time we need to keep the data stable for more time. 
+    
+![Screenshot (2467)](https://user-images.githubusercontent.com/120498080/220183110-e4aa164a-f019-4664-9bec-d9922065a86c.png)
+- So because of the negative skew we got the less time to meet setup and it makes setup time difficult to meet, whereas to meet hold time we need to keep the data stable for less time. 
+ 
+### Clock Latency
+- The time taken by Clock signal to reach from clock source to the clock pin of a particular flip flop is called as Clock latency.
+    
+![Screenshot (2468)](https://user-images.githubusercontent.com/120498080/220183662-94cbea73-03f0-4a70-ae2b-1df8b2e0e1a4.png)
+
+
+### Clock Jitter
+- Clock jitter is a characteristic of the clock source and the clock signal environment. It can be defined as “deviation of a clock edge from its ideal location.” Clock jitter is typically caused by clock generator circuitry, noise, power supply variations, interference from nearby circuitry etc.
+    
+![Screenshot (2469)](https://user-images.githubusercontent.com/120498080/220183707-c17713db-3ef3-41fb-9cad-e52ec50015ce.png)
+ 
+### Setup Check
+![Screenshot (2471)](https://user-images.githubusercontent.com/120498080/220192551-c8c93b42-4f29-4820-a7e4-f183a3627173.png)
+![Screenshot (2473)](https://user-images.githubusercontent.com/120498080/220192560-3d0a3679-87d6-4589-b753-24e05ef6283b.png)
+![Screenshot (2477)](https://user-images.githubusercontent.com/120498080/220192613-e7588eea-9342-48f5-856b-d8b4b2c32a6f.png)
+ 
+### Hold Check
+![Screenshot (2474)](https://user-images.githubusercontent.com/120498080/220193019-72e6054d-afe9-4514-b16e-cb1423c7ac97.png)
+![Screenshot (2476)](https://user-images.githubusercontent.com/120498080/220193051-2bfa198c-6317-495f-977e-a2532b20f1ff.png)
+![Screenshot (2478)](https://user-images.githubusercontent.com/120498080/220193081-4fd32cf8-2f18-4349-8c4a-9069564219f8.png)
+ 
+    
+### CRPR-Clock Reconvergence Pessimism Removal
+ 
+![Screenshot (2479)](https://user-images.githubusercontent.com/120498080/220192392-95da6514-59d8-4362-b9d3-806b0c0a5d5a.png)
+- During decision of max and min launch path sometimes there is confussion in choosing the best path because some part of the circuit is common in two paths and that can be soled by CRPF    
+- Clock reconvergence pessimism (CRP) is a delay difference between the launching and capturing clock pathways. The most prevalent causes of CRP are convergent pathways in the clock network and varying minimum and maximum delays of clock network cells.  
+ 
+
+### STA Text Report
+When STA tool dose analysis and reports setup and hold timing, its first converts that logic into nodes and cells and archs.
+  
+![Screenshot (2438)](https://user-images.githubusercontent.com/120498080/220064935-353bce95-62b9-43e4-81ae-871a6a9e0994.png)
+
+#### Sample STA Text Report
+![Screenshot (2441)](https://user-images.githubusercontent.com/120498080/220065230-b7350659-e6a7-4edc-92ac-ae32057a372f.png)  
+
 # Day-4 Summary
 
 Crosstalk may lead to delta delays and glitches. Switching activity affected by coupling of aggresor and victim, leads to delta delay which may cause timing failure. Glitching is caused due to sudden charge transfer on a stable net which may cause functional failure. Variation could be inter-die and intra-die. The former is of global and systematic, and latter is of on-chip and random nature. In clock gating transition on gating pin, shouldn't create unnecessary active edge of the clock in the fanout. Async pin checks are needed to avoid unknown state. Recovery and removal time checks for assertion and deassertions need to be checked therefore.
