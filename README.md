@@ -140,14 +140,28 @@ A "liberty file" is a file format that provides timing and power information for
 
 The liberty file contains timing information about the delay of each cell and its input and output pins. This information is critical for accurate timing analysis of a circuit. It also provides information on the power consumption of each cell, which is important for power analysis and optimization.
 
-The .lib file is an ASCII representation of the timing and power
-parameters associated with any cell in a particular semiconductor
-technology The .lib file contains timing models and data to calculate I/O delay paths, Timing check values and Interconnect delays.
+The .lib file is an ASCII representation of the timing and powerparameters associated with any cell in a particular semiconductor technology The .lib file contains timing models and data to calculate I/O delay paths, Timing check values and Interconnect delays.
 
-**Exercises:**
+**Below is picture showing descriptions of liberty file**
 
-• Find all the cells in simple_max.lib.
-• Find all the pins of the cell NAND2_X1 in simple_max.lib
+![understanding_lib_file](https://user-images.githubusercontent.com/100671647/220627166-6a01e5f4-3076-46ef-9bd0-39db740039b1.png)
+
+**Exercises_2.1:**
+
+**Q1) Find all the cells in simple_max.lib.**
+
+- To find number of cells in simple_max.lib file type below command:
+      more simple_max.lib | grep -c " End cell"
+      
+- In order to list all cells in a library and dump in a "all_cell" file, type below command:
+      more simple_max.lib | grep " End cell" | tee all_cell
+
+**Snapshot below showing execution of above commands** (a lot more cells are there in the list which are not shown)
+
+![cell_findings](https://user-images.githubusercontent.com/100671647/220631367-43db3baa-4deb-444a-8755-97e5cce7f33d.png)
+
+
+**Q2) Find all the pins of the cell NAND2_X1 in simple_max.lib**
 
 211 and 3.
 
