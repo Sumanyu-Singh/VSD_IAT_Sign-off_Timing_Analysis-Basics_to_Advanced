@@ -317,6 +317,17 @@ Example: from(F1/CK)-through(U1/Z)-to(F5/D)
 
 ![set_false_path](https://user-images.githubusercontent.com/100671647/220551170-d691ee9d-35a4-49cf-b4e3-dc59c9875c73.png)
 
+"**set_multicycle_path**" command is used to change the default behaviour.Command shown in below picture tells STA tool to as setup check in two cycle.
+
+![mul_cycle_path](https://user-images.githubusercontent.com/100671647/220596357-f2533576-3e9e-4723-a11e-40b61dadfc84.png)
+
+**Other Exceptions are:**
+
+![image](https://user-images.githubusercontent.com/100671647/220596824-4038c91b-5561-42a5-974f-c6f9c10df4ba.png)
+
+
+
+
 **ECO – Engineering Change Order**
 • In the ECO cycle, we perform various analysis one by one for every 
 check which we need to close but not closed till PnR stage. 
