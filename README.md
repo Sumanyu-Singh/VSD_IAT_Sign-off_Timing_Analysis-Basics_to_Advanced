@@ -283,7 +283,7 @@ For running STA use below command:
 
 Add below command in **run.tcl**, this will report slack compulation w.r.t 2 path as shown in below image 
 ```
-    report_checks –from F1/CK -endpoint_count 100
+    report_checks –from F1/CK -endpoint_count 2
 ```
 Below is generated result of STA run(run_1.log file):
 
