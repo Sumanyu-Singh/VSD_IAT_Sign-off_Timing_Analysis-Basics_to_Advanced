@@ -307,12 +307,25 @@ Before that, let's understand "Path Specification". As there could be multiple p
 
 ![path_specif](https://user-images.githubusercontent.com/100671647/220549282-b10777ca-46f4-4a13-af49-37d68aa6b648.png)
 
-Path exception is done by typically three commands:
+Path Specification is done by typically three commands:
 - from (start points: either ports or typically clock pin of flops in design)
 - to (end point)
 - through (nodes between start point and end point)
 
+"**set_false_path**" command tells STA tool that don't time this path.
+Example: from(F1/CK)-through(U1/Z)-to(F5/D)
 
+![set_false_path](https://user-images.githubusercontent.com/100671647/220551170-d691ee9d-35a4-49cf-b4e3-dc59c9875c73.png)
+
+**ECO – Engineering Change Order**
+• In the ECO cycle, we perform various analysis one by one for every 
+check which we need to close but not closed till PnR stage. 
+• There are specialized signoff tools that help us to analyze the issue 
+and also suggest the changes we need to do in order to close the 
+issue. 
+• The suggested change is captured in an eco file.
+• In this lab we will focus on ECO for timing purposes, this is done to fix 
+setup and hold violation
 
 
 
