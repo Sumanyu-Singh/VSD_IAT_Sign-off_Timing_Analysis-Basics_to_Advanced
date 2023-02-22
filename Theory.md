@@ -188,23 +188,22 @@ Two rules for **Hold Check**
 
 **Clock Reconvergence Pessimism (CRP):** It is a term used in STA to describe a scenario where the actual timing of a circuit is better than what is predicted by the STA tool. This happens because STA assumes that all signals will be delayed by the same amount of time from their arrival at the inputs to their arrival at the outputs, regardless of the timing relationship between them.
 
-Clock reconvergence pessimism specifically refers to the situation where there are multiple clock signals in the circuit, and the STA tool assumes that they will all arrive at the same time, even though in reality they may have different arrival times due to variations in the physical layout of the circuit. This can lead to an overestimation of the required delay between different parts of the circuit, resulting in a slower circuit than necessary.
+- Clock reconvergence pessimism (CRP) is a delay difference between the launching and capturing clock pathways. The most prevalent causes of CRP are convergent pathways in the clock network and varying minimum and maximum delays of clock network cells.  
+ 
+
+- Clock reconvergence pessimism specifically refers to the situation where there are multiple clock signals in the circuit, and the STA tool assumes that they will all arrive at the same time, even though in reality they may have different arrival times due to variations in the physical layout of the circuit. This can lead to an overestimation of the required delay between different parts of the circuit, resulting in a slower circuit than necessary.
 
 **CRPR-Clock Reconvergence Pessimism Removal:** To account for clock reconvergence pessimism, designers may add extra delay to the clock tree or use a more advanced STA tool that can model clock skew more accurately. It is important to reduce clock skew to minimize the impact of clock reconvergence pessimism on the circuit's performance.
  
 ![crpr_removal](https://user-images.githubusercontent.com/100671647/220535101-edb62731-1dcf-4967-962b-20686d0d9a77.png)
 
-- During decision of max and min launch path sometimes there is confussion in choosing the best path because some part of the circuit is common in two paths and that can be soled by CRPF    
-- Clock reconvergence pessimism (CRP) is a delay difference between the launching and capturing clock pathways. The most prevalent causes of CRP are convergent pathways in the clock network and varying minimum and maximum delays of clock network cells.  
- 
-
-### STA Text Report
-When STA tool dose analysis and reports setup and hold timing, its first converts that logic into nodes and cells and archs.
+**STA Text Report:** When STA tool dose analysis and reports setup and hold timing, it first converts that logic into nodes and cells and archs.
   
-![Screenshot (2438)](https://user-images.githubusercontent.com/120498080/220064935-353bce95-62b9-43e4-81ae-871a6a9e0994.png)
+![logic_to_cell_arch](https://user-images.githubusercontent.com/100671647/220539019-baffee1a-0dbc-4dda-b56d-f5eb93b6a5f2.png)
 
-#### Sample STA Text Report
-![Screenshot (2441)](https://user-images.githubusercontent.com/120498080/220065230-b7350659-e6a7-4edc-92ac-ae32057a372f.png)  
+**Sample STA Text Report**
+
+![txt_report_sample](https://user-images.githubusercontent.com/100671647/220539398-bc4ffbf1-a7d5-4d79-8dcf-7515011dc84c.png)
 
 # Day-4 Summary
 
