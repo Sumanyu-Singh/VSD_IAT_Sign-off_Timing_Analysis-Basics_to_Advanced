@@ -27,7 +27,6 @@ This repository contains all the details of the hands on labs done by me during 
 * [Day-3 Summary](#day-3-summary)
  
 * [Day-3 Labs](#day-3-labs)
-  * [Understanding full reg to reg STA analysis](#understanding-full-reg-to-reg-sta-analysis)
   * [Understanding Slack computation](#understanding-slack-computation)
   
 * [Day-4 Summary](#day-4-summary)
@@ -248,23 +247,45 @@ Report in run3.log is below:
 
 # Day-3 Labs
 
-## Understanding full reg to reg STA analysis
-
-![Screenshot from 2022-02-07 23-16-53](https://user-images.githubusercontent.com/73732594/152843403-144f3783-6c80-4160-87dc-e907c2843bb3.png)
-![Screenshot from 2022-02-07 23-18-51](https://user-images.githubusercontent.com/73732594/152843754-f891934b-ab2d-4390-bba9-f6f8fc21783b.png)
-
-This is the netlist and sdc file utilized for the analysis.
-
-![Screenshot from 2022-02-07 23-03-03](https://user-images.githubusercontent.com/73732594/152841252-d13330d3-4576-46bd-a201-4d73e738630d.png)
-
-Functionally, it might seem like the first path, corresponds to the slack computation but the same cannot be mapped from the report exactly.
-
-
 ## Understanding Slack computation
 
-![Screenshot from 2022-02-07 23-07-07](https://user-images.githubusercontent.com/73732594/152842219-27d77509-e33c-4101-80a9-44b4c3acb55a.png)
+Cosider below example circuit for slack calculatio for different paths:
 
-![Screenshot from 2022-02-07 23-09-25](https://user-images.githubusercontent.com/73732594/152842243-401bf7ff-c1e7-4bc6-97b1-e2c8348d17b4.png)
+![ckt_example](https://user-images.githubusercontent.com/100671647/220704024-88b79a19-e358-49e4-987f-c1a2c9dfca36.png)
+
+Below is **s27.v** file:
+
+![image](https://user-images.githubusercontent.com/100671647/220706153-5129bba8-a5f7-4710-8701-54044cc101c4.png)
+
+Below is **s27.sdc** file:
+
+![image](https://user-images.githubusercontent.com/100671647/220706540-f2b80f4b-d92d-448f-9400-64c4e374074e.png)
+
+For running STA use below command:
+```
+    sta run.tcl -exit | tee run_1.log
+```
+**Below is the run.tcl content and run_1.log file generated after STA run**:
+
+![image](https://user-images.githubusercontent.com/100671647/220708715-f35bca8e-3e6c-4900-85ce-9148e76208a5.png)
+
+![image](https://user-images.githubusercontent.com/100671647/220709336-839ee7c3-7738-418a-9d3e-371f6753d55f.png)
+
+**To get a detailed report consisting caps delay, net delays, slew rate input pins delays use below command:**
+```
+      report_checks -path_delay min_max -fields {nets cap slew input_pins} -digits {4}
+```
+![run_tcl](https://user-images.githubusercontent.com/100671647/220710442-39a32777-f313-473d-bc1e-ad3c7b80d35a.png)
+
+Generated run_1.log file is as below:
+
+![run1_log](https://user-images.githubusercontent.com/100671647/220711265-c0c1e634-0b76-492d-93b8-48a370096c72.png)
+
+
+
+
+
+
 
 # Day-4 Summary
 
