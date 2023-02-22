@@ -186,10 +186,14 @@ Two rules for **Hold Check**
 ![image](https://user-images.githubusercontent.com/100671647/220531097-fc1fa03a-7d9d-4b3e-ac4d-d404a40ec3a9.png)
 
 
-    
-### CRPR-Clock Reconvergence Pessimism Removal
+**Clock Reconvergence Pessimism (CRP):** It is a term used in STA to describe a scenario where the actual timing of a circuit is better than what is predicted by the STA tool. This happens because STA assumes that all signals will be delayed by the same amount of time from their arrival at the inputs to their arrival at the outputs, regardless of the timing relationship between them.
+
+Clock reconvergence pessimism specifically refers to the situation where there are multiple clock signals in the circuit, and the STA tool assumes that they will all arrive at the same time, even though in reality they may have different arrival times due to variations in the physical layout of the circuit. This can lead to an overestimation of the required delay between different parts of the circuit, resulting in a slower circuit than necessary.
+
+**CRPR-Clock Reconvergence Pessimism Removal:** To account for clock reconvergence pessimism, designers may add extra delay to the clock tree or use a more advanced STA tool that can model clock skew more accurately. It is important to reduce clock skew to minimize the impact of clock reconvergence pessimism on the circuit's performance.
  
-![Screenshot (2479)](https://user-images.githubusercontent.com/120498080/220192392-95da6514-59d8-4362-b9d3-806b0c0a5d5a.png)
+![crpr_removal](https://user-images.githubusercontent.com/100671647/220535101-edb62731-1dcf-4967-962b-20686d0d9a77.png)
+
 - During decision of max and min launch path sometimes there is confussion in choosing the best path because some part of the circuit is common in two paths and that can be soled by CRPF    
 - Clock reconvergence pessimism (CRP) is a delay difference between the launching and capturing clock pathways. The most prevalent causes of CRP are convergent pathways in the clock network and varying minimum and maximum delays of clock network cells.  
  
