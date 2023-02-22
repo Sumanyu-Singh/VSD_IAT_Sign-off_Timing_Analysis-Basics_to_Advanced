@@ -150,12 +150,14 @@ The .lib file is an ASCII representation of the timing and powerparameters assoc
 
 **Q1) Find all the cells in simple_max.lib.**
 
-- To find number of cells in simple_max.lib file type below command:
-       more simple_max.lib | grep -c " End cell"
-      
+- To find number of cells in simple_max.lib file type below command: 
+```
+    more simple_max.lib | grep -c " End cell"
+```
 - In order to list all cells in a library and dump in a "all_cell" file, type below command:
-       more simple_max.lib | grep " End cell" | tee all_cell
-
+```
+    more simple_max.lib | grep " End cell" | tee all_cell
+```
 **Snapshot below showing execution of above commands** (a lot more cells are there in the list which are not shown)
 
 ![cell_findings](https://user-images.githubusercontent.com/100671647/220631367-43db3baa-4deb-444a-8755-97e5cce7f33d.png)
@@ -179,10 +181,12 @@ The max capacitance increases multifold, and the number of input pins.
 - I compared the file and found they have differnet values in cell_ fall, fall_transition, cell_rise and rise_transitionof all the cells.
 - Fabrication process variations could either increase or decrease the delay of a cell. So we need to set early and late value while setting the derate factor. STA tool would consider early or late timing derate based on the path and type of analysis.
 By using below command I checked the difference between both files:
-      gvimdiff simple_max.lib simple_min.lib
+    
+```
+    gvimdiff simple_max.lib simple_min.lib
+```
       
 ![diff](https://user-images.githubusercontent.com/100671647/220635945-26cfcc2d-2a79-4f22-a50c-81ef3e5864bc.png)
-
 
 ## Understanding Lib Parsing
 
