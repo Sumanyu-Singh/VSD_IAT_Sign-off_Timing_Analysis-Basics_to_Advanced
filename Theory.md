@@ -1,3 +1,14 @@
+* [Day-1 Summary](#day-1-summary)
+
+* [Day-2 Summary](#day-2-summary)
+
+* [Day-3 Summary](#day-3-summary)
+
+* [Day-4 Summary](#day-4-summary)
+
+* [Day-5 Summary](#day-5-summary)
+
+
 # Day-1 Summary
 
 Static Timing Analysis (STA) is a method of verifying timing performance of a design. Its key feature is that it is exhaustive compared to functional simulation and SPICE simulation. It doesn't require testbenches and is not used for asynchronous design. It doesn't rely on imput vectors and is a mathematical technique going through all the paths. It doesn't verify functionality of the design. Its pessimistic and conservative so as to ensure there is a definite guard band for sign-off. Typical inputs for STA are netlist, SDC or constraints file, and logic libraries.
