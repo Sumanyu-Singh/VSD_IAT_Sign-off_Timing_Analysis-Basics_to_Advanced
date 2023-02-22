@@ -97,15 +97,26 @@ Below is the standard Synopsys Design Constraint (SDC) file (**simple.sdc**):
 
 Primary ports are defined with delays with associated clock: tau2015_clk
 
-set_input_delay 5 –max –rise [get_ports inp1] –clock tau2015_clk 
+Below are the commands for IO Delays:
 
-set_output_delay -10 –min –fall [get_ports out] –clock tau2015_clk
+	set_input_delay 5 –max –rise [get_ports inp1] –clock tau2015_clk 
+	set_output_delay -10 –min –fall [get_ports out] –clock tau2015_clk
+	
+Command for Input transitions by environmental factors: 
+
+    set_input_transition 10 –min –rise [get_ports inp1]
+    
+Command for setting Capacitive load on output pin:
+
+    set_load –pin_load 4 [get_ports out]
+    
+"**report_checks**" command is used to report timing on the design.
 
 ## OpenSTA Run script
 
 Below are the commands used for running the STA flow:
 
-![run_script](https://user-images.githubusercontent.com/100671647/220426436-46f173a7-6977-4f44-a773-5996c84e4e2d.png)
+![run_script](https://user-images.githubusercontent.com/100671647/220608639-f2a4676a-72dd-4378-bd4b-57512c49febe.png)
 
 For running the OpenSTA, we use below command
 
