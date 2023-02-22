@@ -118,17 +118,15 @@ When we have multiple clocks, in STA, a possible common base period is choses, a
 **Multiple Clocks:** When different types of clock are present(of different frequency) then setup check is calculated or the most restrictive setup is identified by first expanding a clock by a **common base period** and in that whichever is the closest launch and capture which is used find the most restrictive setup. The hold check is dependent upon the setup check.
 **Setup and Hold Check**
 
-![setup_chk](https://user-images.githubusercontent.com/100671647/220515106-0c4a68ac-9842-43b8-a31a-58e8994af3e9.png)
-
-![hold_chk](https://user-images.githubusercontent.com/100671647/220515581-5490a958-683e-4d97-a949-41d4f5ee70cd.png)
+![setup_hold_chk](https://user-images.githubusercontent.com/100671647/220534395-fae1ed3d-c9b7-4f3e-8c5e-47e2dabc1566.png)
 
 Two rules for **Hold Check**
 
-1.   
+**1.**   
 
 ![rule_1](https://user-images.githubusercontent.com/100671647/220515371-45e7ad16-81da-44c8-b37d-e00644d29214.png)
 
-2.
+**2.**
 
 ![rule_2](https://user-images.githubusercontent.com/100671647/220515779-c6f16ea8-c20f-4622-b460-ce879a9fe99d.png)
 
