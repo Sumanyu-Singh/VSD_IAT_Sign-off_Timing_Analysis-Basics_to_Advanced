@@ -172,7 +172,7 @@ Two rules for **Hold Check**
 
 **Clock Jitter:** is a characteristic of the clock source and the clock signal environment. It can be defined as “deviation of a clock edge from its ideal location.” Clock jitter is typically caused by clock generator circuitry, noise, power supply variations, interference from nearby circuitry etc.
 
-![clk_jitter](https://user-images.githubusercontent.com/100671647/220529452-d8bab160-1675-46b0-a89d-a232d39fe761.png)
+![clk_jitter](https://user-images.githubusercontent.com/100671647/220533943-f1266a50-122b-4a41-82fe-af86c0f137b7.png)
 
 **Setup Check and Setup Check With Clock Skew and Jitter**
 
