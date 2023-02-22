@@ -70,27 +70,6 @@ There are exceptions to design constraints which relax the requirements set by o
 Apart from setup and hold checks, STA also has other timing checks in place like clock gating checks, async pin checks and data to data checks. We also make a note of the rise and fall slew transitions. We also have to provide load analysis by specifying min and max capacitances on the IO net, and corresponding fanout load on ports and output pins. The skew between launch and capture clock waveforms also needs to be taken into account, the skew is positive if the capture flop clock leads the launch flop clock. The duty cycle of the clock is limited by various parameters apart from the technology node. Latch based designs allow more flexibility in timing and also aids time borrowing. A typical STA text report contains startpoint, endpoint, 'max' signifies setup time check and the nodes in the design mentioned as paths, whose respective delays are taken into account.   
 
 **Other Timing Checks**
-Apart from Hold and Setup checks(which happens in data pins with respect to data pins) STA also dose other types of check like
-
-1.Clock Gating Checks(done on clock enable pin with respect to the clock pin)
-
-2.Async Pin Checks(checks when reset pin, set pin, clear pin can be inserted with respect to clock)
-
-3.Data to Data Checks(identify may skew between 2 pins)
-
-**Design Rule Checks**
-Design Rule Checks specifies about
-
-1. Slew/Transition Analysis
-
-2. Load Analysis
-We can specify minimum and maximum capacitance on ports and nets.
-Also specify the maximum fanout load on ports and output pins.
-3. Clock Skew Analysis
-It is difference in delay of the clock at different points.
-It is basically the delay between the launch clock and capture clock.
-Skew is said to be positive when caputre clock has more delay.
-**Other Timing Checks**
 Apart from Hold and Setup checks(which happens in data pins with respect to data pins) STA also dose other types of check like 
 - Clock Gating Checks(done on clock enable pin with respect to the clock pin)
 - Async Pin Checks(checks when reset pin, set pin, clear pin can be inserted with respect to clock) 
