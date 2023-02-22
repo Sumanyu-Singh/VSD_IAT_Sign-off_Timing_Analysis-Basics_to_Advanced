@@ -225,10 +225,9 @@ Below is the command for running STA tool
 
 ## Understanding Timing Reports 
 
-![Screenshot from 2022-02-07 22-37-20](https://user-images.githubusercontent.com/73732594/152837812-50e222c9-106d-472f-94c2-2e2d5b9341f3.png)
-This is the timing report we have obtained from the netlist and other inputs being parsed into the OpenTimer tool.
+Below is the timing report we have obtained from the netlist and other inputs being parsed into the OpenSTA tool.
 
-![Screenshot from 2022-02-07 22-53-31](https://user-images.githubusercontent.com/73732594/152839697-85913598-8ed4-49df-8d95-8e3cb26ad87c.png)
+![report](https://user-images.githubusercontent.com/100671647/220647268-42ead6c6-9e18-40c1-a8c4-b79b133222a5.png)
 
 # Day-3 Summary
 
