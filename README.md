@@ -190,10 +190,13 @@ By using below command I checked the difference between both files:
 
 ## Understanding Lib Parsing
 
+Below is the **run.tcl** file for lab2:
 
+![run_tcl](https://user-images.githubusercontent.com/100671647/220642949-602644d2-b249-4d60-85d4-edae21355312.png)
 
-![Screenshot from 2022-02-07 21-21-25](https://user-images.githubusercontent.com/73732594/152823092-c6aac9a5-1b1c-4bc6-911a-728a2949ffa0.png)
+Below is **simple.sdc** file for lab2:
 
+![simple_sdc](https://user-images.githubusercontent.com/100671647/220643625-bd1a1312-4d07-4d3a-af8e-36aa7a88193d.png)
 
 ## Understanding SPEF file and SPEF parsing
 
@@ -213,10 +216,12 @@ A Typical SPEF File has 4 main sections
 3. Top Level Ports
 4. Parasitic description
 
+Below is the command for running STA tool
+```
+    sta run.tcl -exit | tee run_2.log
+```
 
-
-![Screenshot from 2022-02-07 22-37-20](https://user-images.githubusercontent.com/73732594/152836739-3295abdf-d8a3-4b8b-812b-cd9b4fd2a36a.png)
-
+![spef_run_sta](https://user-images.githubusercontent.com/100671647/220645368-e43dec30-db90-4c5b-b2d3-27c644955ef7.png)
 
 ## Understanding Timing Reports 
 
