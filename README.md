@@ -39,7 +39,7 @@ This repository contains all the details of the hands on labs done by me during 
 
 * [Day-5 Labs](#day-5-labs)
   * [Clock Reconvergence Pessimism (CRP) Basics](#clock-reconvergence-pessimism-crp-basics)
-  * [CPPR-Common Path Pessimism Removal/ Clock Reconvergence Pessimism Removal(CRPR)](#cppr-common-path-pessimism-removal-/-clock-reconvergence-pessimism-removal-crpr)
+  * [CPPR-Common Path Pessimism Removal/ Clock Reconvergence Pessimism Removal(CRPR)](#cppr-common-path-pessimism-removal-clock-reconvergence-pessimism-removal-crpr)
   * [Engineering Change Order (ECO)](#engineering-change-order-eco)
 * [Acknowledgements:](#acknowledgements)
 * [Author:](#author)
@@ -413,7 +413,17 @@ Add below command in **run.tcl** to do so, This will report slack compulation w.
 # Day-5 Labs
   ## Clock Reconvergence Pessimism (CRP) Basics
   
-  ## CPPR-Common Path Pessimism Removal/ Clock Reconvergence Pessimism Removal(CRPR) 
+  Clock reconvergence pessimism is a term used in static timing analysis (STA) to describe a scenario where the actual timing of a circuit is better than what is predicted by the STA tool. This happens because STA assumes that all signals will be delayed by the same amount of time from their arrival at the inputs to their arrival at the outputs, regardless of the timing relationship between them.
+  
+  Clock reconvergence pessimism specifically refers to the situation where there are multiple clock signals in the circuit, and the STA tool assumes that they will all arrive at the same time, even though in reality they may have different arrival times due to variations in the physical layout of the circuit. This can lead to an overestimation of the required delay between different parts of the circuit, resulting in a slower circuit than necessary.
+  
+  ![image](https://user-images.githubusercontent.com/100671647/220888451-fc8997c7-2d1d-4dc3-81d0-7c5695b252a2.png)
+
+  ![image](https://user-images.githubusercontent.com/100671647/220889073-d8b0d3a4-eb83-4c9c-b8c2-e6c63a552ea2.png)
+
+  ## CPPR-Common Path Pessimism Removal/ Clock Reconvergence Pessimism Removal(CRPR)
+  
+  To account for clock reconvergence pessimism, designers may add extra delay to the clock tree or use a more advanced STA tool that can model clock skew more accurately. It is important to reduce clock skew to minimize the impact of clock reconvergence pessimism on the circuit's performance.
   
   
   ![image](https://user-images.githubusercontent.com/100671647/220884628-d56cebee-30fb-4cbf-9916-a0b8832cda51.png)
