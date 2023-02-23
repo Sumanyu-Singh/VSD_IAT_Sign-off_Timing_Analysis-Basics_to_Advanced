@@ -41,6 +41,7 @@ This repository contains all the details of the hands on labs done by me during 
   * [Clock Reconvergence Pessimism (CRP) Basics](#clock-reconvergence-pessimism-crp-basics)
   * [CPPR-Common Path Pessimism Removal/ Clock Reconvergence Pessimism Removal(CRPR)](#cppr-common-path-pessimism-removal-clock-reconvergence-pessimism-removal-crpr)
   * [Engineering Change Order (ECO)](#engineering-change-order-eco)
+* [References:](#references)
 * [Acknowledgements:](#acknowledgements)
 * [Author:](#author)
 
@@ -514,7 +515,12 @@ setup and hold violation
    ![image](https://user-images.githubusercontent.com/100671647/220902167-f606a956-39c4-41bc-8d38-5844c3864981.png)
 
 
-
+## References
+---
+- [OpenSTA Manual](https://github.com/The-OpenROAD-Project/OpenSTA/blob/master/doc/OpenSTA.pdf)
+- [OpenSTA installation guide](https://github.com/The-OpenROAD-Project/OpenSTA)
+- https://github.com/Geetima2021/vsdpcvrd
+- https://github.com/Anmol-wq/VSD-IAT-Sign-off-Timing-Analysis---Basics-to-Advanced
 
 
 ## Acknowledgements
