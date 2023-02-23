@@ -252,7 +252,7 @@ Report in run3.log is below:
 
 Cosider below example circuit for slack calculatio for different paths:
 
-![ckt_example](https://user-images.githubusercontent.com/100671647/220834478-6a385de2-59ec-4d15-bd5f-93b1e5458de5.png)
+![ckt_example](https://user-images.githubusercontent.com/100671647/220838788-e62d0601-e4e8-4df6-bb3c-1a5a8e5069c7.png)
 
 Below is **s27.v** file:
 
