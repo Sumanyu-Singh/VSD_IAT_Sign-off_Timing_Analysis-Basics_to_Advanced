@@ -39,8 +39,7 @@ This repository contains all the details of the hands on labs done by me during 
 
 * [Day-5 Labs](#day-5-labs)
   * [Clock Reconvergence Pessimism (CRP) Basics](#clock-reconvergence-pessimism-crp-basics)
-  * [Common Path Pessimism Removal(CPPR)/Clock Reconvergence Pessimism Removal(CRPR)](#common-path-pessimism-removal-cppr/-clock-reconvergence-pessimism-removal-crpr)
-  
+  * [Common Path Pessimism Removal(CPPR)](#common-path-pessimism-removal-cppr)
   * [Engineering Change Order (ECO)](#engineering-change-order-eco)
 * [References:](#references)
 * [Acknowledgements:](#acknowledgements)
@@ -424,9 +423,9 @@ Add below command in **run.tcl** to do so, This will report slack compulation w.
   ![image](https://user-images.githubusercontent.com/100671647/220889073-d8b0d3a4-eb83-4c9c-b8c2-e6c63a552ea2.png)
 
 
-  ## Common Path Pessimism Removal(CPPR)/Clock Reconvergence Pessimism Removal(CRPR)
+  ## Common Path Pessimism Removal(CPPR))
   
-  To account for clock reconvergence pessimism, designers may add extra delay to the clock tree or use a more advanced STA tool that can model clock skew more accurately. It is important to reduce clock skew to minimize the impact of clock reconvergence pessimism on the circuit's performance.
+  This is also known as **Clock Reconvergence Pessimism Removal (CRPR**). To account for clock reconvergence pessimism, designers may add extra delay to the clock tree or use a more advanced STA tool that can model clock skew more accurately. It is important to reduce clock skew to minimize the impact of clock reconvergence pessimism on the circuit's performance.
   
   For this Analysis I have used **lab4** directory.
   **Below is the circuit diagram showing paths:**
