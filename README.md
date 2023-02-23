@@ -302,7 +302,48 @@ Add below command in **run.tcl** to do so, This will report slack compulation w.
 ```
    sta run.tcl -exit | tee out.txt
 ```
-**Generated Result of above command, shows slack computation of all possible paths for given design example**
+**Generated Result (below) of above command shows slack computation of all possible paths for given design example**
+
+**Path_1:**
+
+![path1](https://user-images.githubusercontent.com/100671647/220811377-3cde5a03-bbd1-48fa-8972-2e2990b12366.png)
+
+**Path_2:**
+
+![path2](https://user-images.githubusercontent.com/100671647/220811808-7dd3e3d8-8bcf-4f88-b138-e87101523787.png)
+
+**Path_3:**
+
+![path3](https://user-images.githubusercontent.com/100671647/220811914-6d34fc5b-574c-4aee-9081-7722ede29798.png)
+
+**Path_4:**
+
+![path4](https://user-images.githubusercontent.com/100671647/220812008-6394936e-a68b-4016-b294-abab798113e8.png)
+
+**Path_5:**
+
+![path5](https://user-images.githubusercontent.com/100671647/220812080-9df223d2-b5f9-4e48-8888-57d93bce985b.png)
+
+**Path_6:**
+
+![path6](https://user-images.githubusercontent.com/100671647/220812152-8c07a439-0192-49d9-9f9d-e27ed683a893.png)
+
+**Path_7:**
+
+![path7](https://user-images.githubusercontent.com/100671647/220812266-2bf339d4-6687-4df8-94b2-f0a83c22ae98.png)
+
+**Path_8:**
+
+![path8](https://user-images.githubusercontent.com/100671647/220812368-af77798b-47ac-49e6-b51c-607e8330167a.png)
+
+
+
+
+
+
+
+
+
 
 
 # Day-4 Summary
