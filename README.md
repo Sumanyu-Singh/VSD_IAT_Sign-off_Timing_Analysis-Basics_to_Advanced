@@ -421,30 +421,97 @@ Add below command in **run.tcl** to do so, This will report slack compulation w.
 
   ![image](https://user-images.githubusercontent.com/100671647/220889073-d8b0d3a4-eb83-4c9c-b8c2-e6c63a552ea2.png)
 
+
   ## CPPR-Common Path Pessimism Removal/ Clock Reconvergence Pessimism Removal(CRPR)
   
   To account for clock reconvergence pessimism, designers may add extra delay to the clock tree or use a more advanced STA tool that can model clock skew more accurately. It is important to reduce clock skew to minimize the impact of clock reconvergence pessimism on the circuit's performance.
   
-  
-  ![image](https://user-images.githubusercontent.com/100671647/220884628-d56cebee-30fb-4cbf-9916-a0b8832cda51.png)
-
+  For this Analysis I have used **lab4** directory.
+  **Below is the circuit diagram showing paths:**
  
-
+  ![image](https://user-images.githubusercontent.com/100671647/220884628-d56cebee-30fb-4cbf-9916-a0b8832cda51.png)
+  
+  **Find Below s27.v file:**
+  
+  ![image](https://user-images.githubusercontent.com/100671647/220894017-b72f3aeb-ef9d-47c1-9d6c-97f0d2ea55af.png)
+  
+  **Find below s27.sdc file:**
+  
+  ![image](https://user-images.githubusercontent.com/100671647/220894305-1ff866d4-4584-4415-98f7-9f29e1433e2c.png)
+  
+  **run.tcl is below (with crpr disabled):**
+  
+  ![image](https://user-images.githubusercontent.com/100671647/220897772-4389e76a-e8c6-485c-a5da-1079b95d92cd.png)
+  
+  **Running STA tool with below command and save result in cppr_disable.log file:**
+   
+   ```
+       sta run.tcl -exit | tee cppr_disable.log
+   ```
+   **Generated cppr_disable.log file (Report before CPPR) is below:**
+   
+   ![image](https://user-images.githubusercontent.com/100671647/220896762-aa99d1fa-3b97-4f9e-8b3e-16583c567d89.png)
+   
+   **Now we enable crpr by editing in run.tcl file as below command i.e do changes from "0" to "1" in "set sta_crpr_enabled" command:**
+   ```
+          set sta_crpr_enabled 1
+   ```
+   
+   **Running STA Tool after making above changes and generating report after CRPR in file cppr_enable.log :**
+   ```
+       sta run.tcl -exit | tee cppr_enable.log
+   ```
+   **Find below generated report cppr_enable.log (after CRPR) file:**
+   
+   ![image](https://user-images.githubusercontent.com/100671647/220898953-e78e038e-813a-41d8-a4ca-22623115d07f.png)
 
   
   ## Engineering Change Order (ECO)
+  
+  In the ECO cycle, we perform various analysis one by one for every 
+check which we need to close but not closed till PnR stage. 
 
+- There are specialized signoff tools that help us to analyze the issue 
+and also suggest the changes we need to do in order to close the 
+issue. 
 
+- The suggested change is captured in an eco file.
 
-
-
-
-
-
-
-
-
-
+- In this lab we will focus on ECO for timing purposes, this is done to fix 
+setup and hold violation
+  
+  I performed this analysis in lab5.
+  **Find below s27.v file:**
+  
+  ![image](https://user-images.githubusercontent.com/100671647/220899864-62ec2ef8-0fed-47af-9e4a-f834e459ccb1.png)
+  
+  **Find below s27_eco.v file:**
+  
+  ![image](https://user-images.githubusercontent.com/100671647/220900271-82492a91-bded-4ba4-9192-95de578e55c0.png)
+  
+  ![image](https://user-images.githubusercontent.com/100671647/220900187-74536032-36c9-45ea-87f6-19c174f29d44.png)
+  
+  **Below is s27.sdc file:**
+  
+  ![image](https://user-images.githubusercontent.com/100671647/220900588-f841720c-7c65-498e-9a0f-75a60c945544.png)
+  
+  **Below is run.tcl script:**
+  
+  ![image](https://user-images.githubusercontent.com/100671647/220900785-ec2e74cc-3f60-48c3-809a-6af6761fc9a5.png)
+  
+  **Running STA Tool by below command and saving result in run.log file:**
+   ```
+       sta run.tcl -exit | tee run.log
+   ```
+   **Generated run.log file below:**
+   
+   ![image](https://user-images.githubusercontent.com/100671647/220901504-977c2c0a-a940-4382-9ee2-34c374bd4e40.png)
+   
+   ![image](https://user-images.githubusercontent.com/100671647/220901769-69736fb6-54ea-4e98-8bcd-4a3409b1585c.png)
+   
+   ![image](https://user-images.githubusercontent.com/100671647/220901970-3b24cc0e-b37d-4d4f-a86a-38aba742703c.png)
+   
+   ![image](https://user-images.githubusercontent.com/100671647/220902167-f606a956-39c4-41bc-8d38-5844c3864981.png)
 
 
 
