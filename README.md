@@ -38,9 +38,7 @@ This repository contains all the details of the hands on labs done by me during 
 * [Day-5 Summary](#day-5-summary)
 
 * [Day-5 Labs](#day-5-labs)
-  * [Revisit slack computation](#revisit-slack-computation)
-  * [Clock Reconvergence Pessimism (CRP) Basics](#clock-reconvergence-pessimism-crp-basics)
-  * [Clock Reconvergence Pessimism Removal (CRPR)](#clock-reconvergence-pessimism-removal-crpr)
+  * [CPPR-Common Path Pessimism Removal/ Clock Reconvergence Pessimism Removal(CRPR)](#cppr-common-path-pessimism-removal-clock-reconvergence-pessimism-removal-crpr)
   * [Engineering Change Order (ECO)](#engineering-change-order-eco)
 * [Acknowledgements:](#acknowledgements)
 * [Author:](#author)
@@ -350,52 +348,95 @@ Add below command in **run.tcl** to do so, This will report slack compulation w.
 # Day-4 Labs
   ## Understanding clock gating check
   
+  I have used **lab6** directory for clock gating check.
+  
+  ![image](https://user-images.githubusercontent.com/100671647/220877311-7fc9007f-afab-4308-8041-cda3dc421a55.png)
+
+  **Below is the logical circuit for Analysis of Clock Gating Check:**
+  
   ![clk_gate_ckt](https://user-images.githubusercontent.com/100671647/220841516-6258871c-9076-43e7-a961-d0bfa56429a2.png)
-
-  ![Screenshot from 2022-02-07 23-37-03](https://user-images.githubusercontent.com/73732594/152846371-b79e12aa-b53e-466b-acff-fea2b30c7797.png)
   
+  **Below is s27.v file:**
+  
+  ![image](https://user-images.githubusercontent.com/100671647/220878313-d6fee3c9-9c2f-4c83-bc68-bab826effc00.png)
+  
+  **Below is s27.sdc file:**
+  
+  ![image](https://user-images.githubusercontent.com/100671647/220878663-abdc1e6d-1df9-4ed5-a630-5f39b43cc0be.png)
+  
+  **Below is the run.tcl file:**
+  
+  ![image](https://user-images.githubusercontent.com/100671647/220874799-7a0a3878-933e-4f98-9a94-c192e97dfea6.png)
 
-  ![Screenshot from 2022-02-07 23-29-38](https://user-images.githubusercontent.com/73732594/152846178-92c2bc06-8966-437f-a476-d6a535481247.png)
-
+- **Running STA with below command:**
+```
+       sta run.tcl -exit | tee run.log
+```
+ **Below is the generated run.log file:**
+ 
+ ![image](https://user-images.githubusercontent.com/100671647/220877021-7238082a-d8dd-446a-b431-faa14d8865f0.png)
+ 
   ## Understanding Async pin checks
+  - For this I have used **lab7** directory
+  **Below is the logic circuit diagram for async pin checks:**
   
-  ![Screenshot from 2022-02-07 23-40-08](https://user-images.githubusercontent.com/73732594/152846814-6e7fc775-c548-4aca-b30e-264700bd9f6a.png)
-
-  ![Screenshot from 2022-02-07 23-41-26](https://user-images.githubusercontent.com/73732594/152847251-387876f0-df1d-4bd1-8fe0-735e81107fa4.png)
+  ![image](https://user-images.githubusercontent.com/100671647/220878996-e3d66104-cb10-46d8-91f9-5da8ba619840.png)
   
-  ![Screenshot from 2022-02-07 23-42-41](https://user-images.githubusercontent.com/73732594/152847313-5bad3d31-481b-430d-b235-5210887bcb26.png) 
+  **Below is design file i.e s27.v:**
+  
+  ![image](https://user-images.githubusercontent.com/100671647/220879347-50cb1d4b-b212-428f-8d76-333616236fa8.png)
 
-OpenTimer 2.1.0 <br>
-Time unit        : 1e-12 s <br>
-Capacitance unit : 1e-15 F <br>
-Voltage unit     : 1 V <br>
-Current unit     : 0.001 A <br>
-Power unit       : 1e-06 W <br>
-Pins           : 22 <br>
-POs            : 1 <br>
-PIs            : 6 <br>
-Gates          : 3 <br>
-Nets           : 19 <br>
-Arcs           : 25 <br>
-SCCs           : 0 <br>
-Tests          : 6 <br>
-Cells          : 105 <br>
+  **Below is s27.sdc file:**
+  
+  ![image](https://user-images.githubusercontent.com/100671647/220879626-ea30a0a2-2beb-40f2-8812-3a9c0cb6f223.png)
+  
+  **run.tcl file below:**
+  
+  ![image](https://user-images.githubusercontent.com/100671647/220879967-cce2321c-ede6-4eda-9cad-f386eb4098b6.png)
+  
+  **Running STA Tool with below command:**
+ 
+  ```
+          sta run.tcl -exit | tee run.log
+  ```
+  
+  **Generated run.log file below:**
+  
+  ![image](https://user-images.githubusercontent.com/100671647/220880783-c6154c69-d3eb-436a-89e3-5d55a55909f8.png)
+  
 
 # Day-5 Summary
 
 [Day-5 Summary](https://github.com/Sumanyu-Singh/VSD_IAT_Sign-off_Timing_Analysis-Basics_to_Advanced/blob/main/Theory.md#day-5-summary)
 
 # Day-5 Labs
-  ## Revisit slack computation
-  ![Screenshot from 2022-02-07 23-48-15](https://user-images.githubusercontent.com/73732594/152848018-392cb1af-684d-4ef0-9329-735edb5ddcb1.png)
 
-  ## Clock Reconvergence Pessimism (CRP) Basics
-  ![Screenshot from 2022-02-07 23-50-44](https://user-images.githubusercontent.com/73732594/152848433-4f1a25bf-72fd-412b-8bf7-99f640e3a2ce.png)
+  ## CPPR-Common Path Pessimism Removal/ Clock Reconvergence Pessimism Removal(CRPR) 
+  
+  
+  ![image](https://user-images.githubusercontent.com/100671647/220884628-d56cebee-30fb-4cbf-9916-a0b8832cda51.png)
 
-  ## Clock Reconvergence Pessimism Removal (CRPR)
-  ![Screenshot from 2022-02-07 23-52-54](https://user-images.githubusercontent.com/73732594/152848638-09978f8d-a4ad-40e7-805c-a0c47cc9c6a0.png)
+ 
+
+
   
   ## Engineering Change Order (ECO)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Acknowledgements
 
