@@ -340,7 +340,7 @@ Add below command in **run.tcl** to do so, This will report slack compulation w.
 
 **Below is the difference between values during slack calculation for same Path:**
 
-![same_path_diffr_value](https://user-images.githubusercontent.com/100671647/220837414-e12ff817-edd6-4a9c-93ce-94f93a7e7a1e.png)
+![same_path_diffr_value](https://user-images.githubusercontent.com/100671647/220837734-69dcd54b-f619-45d0-8630-c4afef0d74f9.png)
 
 
 # Day-4 Summary
