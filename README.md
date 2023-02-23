@@ -515,7 +515,7 @@ setup and hold violation
 
 
 ## References
----
+
 - [OpenSTA Manual](https://github.com/The-OpenROAD-Project/OpenSTA/blob/master/doc/OpenSTA.pdf)
 - [OpenSTA installation guide](https://github.com/The-OpenROAD-Project/OpenSTA)
 - https://github.com/Geetima2021/vsdpcvrd
