@@ -334,14 +334,7 @@ Add below command in **run.tcl** to do so, This will report slack compulation w.
 
 **Path_8:**
 
-![path8](https://user-images.githubusercontent.com/100671647/220812368-af77798b-47ac-49e6-b51c-607e8330167a.png)
-
-
-
-
-
-
-
+![path8](https://user-images.githubusercontent.com/100671647/220816474-0371ffbd-9782-4227-9a78-9001c91b37f3.png)
 
 
 
