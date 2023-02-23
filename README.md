@@ -380,6 +380,7 @@ Add below command in **run.tcl** to do so, This will report slack compulation w.
  
   ## Understanding Async pin checks
   - For this I have used **lab7** directory
+  
   **Below is the logic circuit diagram for async pin checks:**
   
   ![image](https://user-images.githubusercontent.com/100671647/220878996-e3d66104-cb10-46d8-91f9-5da8ba619840.png)
@@ -427,6 +428,7 @@ Add below command in **run.tcl** to do so, This will report slack compulation w.
   This is also known as **Clock Reconvergence Pessimism Removal (CRPR**). To account for clock reconvergence pessimism, designers may add extra delay to the clock     tree or use a more advanced STA tool that can model clock skew more accurately. It is important to reduce clock skew to minimize the impact of clock reconvergence   pessimism on the circuit's performance.
   
   For this Analysis I have used **lab4** directory.
+  
   **Below is the circuit diagram showing paths:**
  
   ![image](https://user-images.githubusercontent.com/100671647/220884628-d56cebee-30fb-4cbf-9916-a0b8832cda51.png)
