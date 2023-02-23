@@ -338,7 +338,9 @@ Add below command in **run.tcl** to do so, This will report slack compulation w.
 
 ![path8](https://user-images.githubusercontent.com/100671647/220816474-0371ffbd-9782-4227-9a78-9001c91b37f3.png)
 
+**Below is the difference between values during slack calculation for same Path:**
 
+![same_path_diffr_value](https://user-images.githubusercontent.com/100671647/220837414-e12ff817-edd6-4a9c-93ce-94f93a7e7a1e.png)
 
 
 # Day-4 Summary
