@@ -250,9 +250,9 @@ Report in run3.log is below:
 
 ## Understanding Slack computation
 
-Cosider below example circuit for slack calculatio for different paths:
+Cosider below example circuit for slack calculation for different paths:
 
-![ckt_example](https://user-images.githubusercontent.com/100671647/220838788-e62d0601-e4e8-4df6-bb3c-1a5a8e5069c7.png)
+![ckt_example](https://user-images.githubusercontent.com/100671647/220841944-c3916681-987e-4f66-b679-8b72894d5f88.png)
 
 Below is **s27.v** file:
 
@@ -349,7 +349,11 @@ Add below command in **run.tcl** to do so, This will report slack compulation w.
 
 # Day-4 Labs
   ## Understanding clock gating check
+  
+  ![clk_gate_ckt](https://user-images.githubusercontent.com/100671647/220841516-6258871c-9076-43e7-a961-d0bfa56429a2.png)
+
   ![Screenshot from 2022-02-07 23-37-03](https://user-images.githubusercontent.com/73732594/152846371-b79e12aa-b53e-466b-acff-fea2b30c7797.png)
+  
 
   ![Screenshot from 2022-02-07 23-29-38](https://user-images.githubusercontent.com/73732594/152846178-92c2bc06-8966-437f-a476-d6a535481247.png)
 
