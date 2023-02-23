@@ -39,7 +39,7 @@ This repository contains all the details of the hands on labs done by me during 
 
 * [Day-5 Labs](#day-5-labs)
   * [Clock Reconvergence Pessimism (CRP) Basics](#clock-reconvergence-pessimism-crp-basics)
-  * [CPPR-Common Path Pessimism Removal/ Clock Reconvergence Pessimism Removal(CRPR)](#cppr-common-path-pessimism-removal-clock-reconvergence-pessimism-removal-crpr)
+  * [CPPR-Common Path Pessimism Removal/ Clock Reconvergence Pessimism Removal(CRPR)](#cppr-common-path-pessimism-removal-/-clock-reconvergence-pessimism-removal-crpr)
   * [Engineering Change Order (ECO)](#engineering-change-order-eco)
 * [Acknowledgements:](#acknowledgements)
 * [Author:](#author)
