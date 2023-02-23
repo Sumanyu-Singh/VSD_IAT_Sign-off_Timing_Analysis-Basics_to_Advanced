@@ -326,7 +326,7 @@ Add below command in **run.tcl** to do so, This will report slack compulation w.
 
 **Path_6:**
 
-![path6](https://user-images.githubusercontent.com/100671647/220812152-8c07a439-0192-49d9-9f9d-e27ed683a893.png)
+![path6](https://user-images.githubusercontent.com/100671647/220815651-039fd73c-25fd-4f17-b62f-f444a21c8f32.png)
 
 **Path_7:**
 
