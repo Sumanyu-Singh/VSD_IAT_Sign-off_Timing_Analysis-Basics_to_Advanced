@@ -279,7 +279,7 @@ For running STA use below command:
 
 **Generated run_1.log file is as below:**
 
-![run1_log](https://user-images.githubusercontent.com/100671647/220711265-c0c1e634-0b76-492d-93b8-48a370096c72.png)
+![run1_log](https://user-images.githubusercontent.com/100671647/220810605-5aa88c46-e497-4a00-8118-0c93c257d87c.png)
 
 Add below command in **run.tcl**, this will report slack compulation w.r.t 2 path as shown in below image 
 ```
