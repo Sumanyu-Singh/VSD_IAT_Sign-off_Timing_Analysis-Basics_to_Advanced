@@ -289,6 +289,7 @@ Below is generated result of STA run(run_1.log file):
 
 ![image](https://user-images.githubusercontent.com/100671647/220716644-244a83fd-b283-4c20-95d6-505a8b847779.png)
 
+
 **Exercises:**
 
 - **Q1) Change the number of paths being reported to 100**
