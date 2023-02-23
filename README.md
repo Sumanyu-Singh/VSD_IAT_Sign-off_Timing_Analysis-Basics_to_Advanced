@@ -422,10 +422,9 @@ Add below command in **run.tcl** to do so, This will report slack compulation w.
 
   ![image](https://user-images.githubusercontent.com/100671647/220889073-d8b0d3a4-eb83-4c9c-b8c2-e6c63a552ea2.png)
 
-
   ## Common Path Pessimism Removal(CPPR))
   
-  This is also known as **Clock Reconvergence Pessimism Removal (CRPR**). To account for clock reconvergence pessimism, designers may add extra delay to the clock tree or use a more advanced STA tool that can model clock skew more accurately. It is important to reduce clock skew to minimize the impact of clock reconvergence pessimism on the circuit's performance.
+  This is also known as **Clock Reconvergence Pessimism Removal (CRPR**). To account for clock reconvergence pessimism, designers may add extra delay to the clock     tree or use a more advanced STA tool that can model clock skew more accurately. It is important to reduce clock skew to minimize the impact of clock reconvergence   pessimism on the circuit's performance.
   
   For this Analysis I have used **lab4** directory.
   **Below is the circuit diagram showing paths:**
